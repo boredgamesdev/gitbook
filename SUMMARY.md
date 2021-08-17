@@ -1,15 +1,16 @@
 # Table of contents
 
 * [HackTricks](README.md)
-* [Untitled](untitled.md)
+* [Untitled](untitled-1.md)
+* [HackTricks](untitled.md)
 * [Pentesting Methodology](pentesting-methodology.md)
 * [External Recon Methodology](external-recon-methodology/README.md)
-  * [Github Leaked Secrets](external-recon-methodology/github-leaked-secrets.md)
-* [Phishing Methodology](phishing-methodology/README.md)
-  * [Clone a Website](phishing-methodology/clone-a-website.md)
-  * [Detecting Phising](phishing-methodology/detecting-phising.md)
-  * [Phishing Documents](phishing-methodology/phishing-documents.md)
-* [Exfiltration](exfiltration.md)
+  * [Phishing Methodology](external-recon-methodology/phishing-methodology/README.md)
+    * [Clone a Website](external-recon-methodology/phishing-methodology/clone-a-website.md)
+    * [Detecting Phising](external-recon-methodology/phishing-methodology/detecting-phising.md)
+    * [Phishing Documents](external-recon-methodology/phishing-methodology/phishing-documents.md)
+  * [Exfiltration](external-recon-methodology/exfiltration.md)
+* [Github Leaked Secrets](github-leaked-secrets.md)
 * [Tunneling and Port Forwarding](tunneling-and-port-forwarding.md)
 * [Brute Force - CheatSheet](brute-force.md)
 * [Search Exploits](search-exploits.md)
@@ -567,4 +568,6 @@
 * [Online Platforms with API](online-platforms-with-api.md)
 * [Stealing Sensitive Information Disclosure from a Web](stealing-sensitive-information-disclosure-from-a-web.md)
 * [Post Exploitation](post-exploitation.md)
+
+## Hacktricks
 

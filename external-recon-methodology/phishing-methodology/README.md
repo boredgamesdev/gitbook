@@ -79,7 +79,7 @@ In order to make sure that the expired domain that you are going to buy **has al
 * [https://hunter.io/](https://hunter.io/)
 * [https://anymailfinder.com/](https://anymailfinder.com/)
 
-In order to **discover more** valid email addresses or **verify the ones** you have already discovered you can check if you can brute-force them smtp servers of the victim. [Learn how to verify/discover email address here](../pentesting/pentesting-smtp/#username-bruteforce-enumeration).  
+In order to **discover more** valid email addresses or **verify the ones** you have already discovered you can check if you can brute-force them smtp servers of the victim. [Learn how to verify/discover email address here](../../pentesting/pentesting-smtp/#username-bruteforce-enumeration).  
 Moreover, don't forget that if the users use **any web portal to access their mails**, you can check if it's vulnerable to **username brute force**, and exploit the vulnerability if possible.
 
 ## Configuring GoPhish
@@ -252,11 +252,11 @@ Set a rDNS \(PTR\) record that resolves the IP address of the VPS to the domain 
 
 You must **configure a SPF record for the new domain**. If you don't know what is a SPF record read the following page:
 
-{% page-ref page="../pentesting/pentesting-smtp/" %}
+{% page-ref page="../../pentesting/pentesting-smtp/" %}
 
 You can use [https://www.spfwizard.net/](https://www.spfwizard.net/) to generate your SPF policy \(use the IP of the VPS machine\)
 
-![](../.gitbook/assets/image%20%28398%29.png)
+![](../../.gitbook/assets/image%20%28398%29.png)
 
 This is the content that must be set inside a TXT record inside the domain:
 
@@ -268,7 +268,7 @@ v=spf1 mx a ip4:ip.ip.ip.ip ?all
 
 You must **configure a DMARC record for the new domain**. If you don't know what is a DMARC record read the following page:
 
-{% page-ref page="../pentesting/pentesting-smtp/" %}
+{% page-ref page="../../pentesting/pentesting-smtp/" %}
 
 You have to create a new DNS TXT record pointing the hostname `_dmarc.<domain>` with the following content:
 
@@ -280,7 +280,7 @@ v=DMARC1; p=none
 
 You must **configure a DKIM for the new domain**. If you don't know what is a DMARC record read the following page:
 
-{% page-ref page="../pentesting/pentesting-smtp/" %}
+{% page-ref page="../../pentesting/pentesting-smtp/" %}
 
 This tutorial is based on: [https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-dkim-with-postfix-on-debian-wheezy](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-dkim-with-postfix-on-debian-wheezy)
 
@@ -339,7 +339,7 @@ The page www.mail-tester.com can indicate you if you your domain is being blocke
 * Decide from which account are you going to send the phishing emails. Suggestions: _noreply, support, servicedesk, salesforce..._
 * You can leave blank the username and password, but make sure to check the Ignore Certificate Errors
 
-![](../.gitbook/assets/image%20%28253%29%20%281%29%20%282%29%20%281%29%20%281%29%20%282%29%20%282%29%20%283%29%20%283%29%20%285%29.png)
+![](../../.gitbook/assets/image%20%28253%29%20%281%29%20%282%29%20%281%29%20%281%29%20%282%29%20%282%29%20%283%29%20%283%29%20%285%29.png)
 
 {% hint style="info" %}
 It's recommended to use the "**Send Test Email**" functionality to test that everything is working.  
@@ -380,10 +380,10 @@ Note that **in order to increase the credibility of the email**, it's recommende
 * Search for **public emails** like info@ex.com or press@ex.com or public@ex.com and send them an email and wait for the response.
 * Try to contact **some valid discovered** email and wait for the response
 
-![](../.gitbook/assets/image%20%2867%29.png)
+![](../../.gitbook/assets/image%20%2867%29.png)
 
 {% hint style="info" %}
-The Email Template also allows to **attach files to send**. If you would also like to steal NTLM challenges using some specially crafted files/documents [read this page](../windows/ntlm/places-to-steal-ntlm-creds.md).
+The Email Template also allows to **attach files to send**. If you would also like to steal NTLM challenges using some specially crafted files/documents [read this page](../../windows/ntlm/places-to-steal-ntlm-creds.md).
 {% endhint %}
 
 ### Landing Page
@@ -393,7 +393,7 @@ The Email Template also allows to **attach files to send**. If you would also li
 * Mark **Capture Submitted Data** and **Capture Passwords**
 * Set a **redirection**
 
-![](../.gitbook/assets/image%20%2895%29.png)
+![](../../.gitbook/assets/image%20%2895%29.png)
 
 {% hint style="info" %}
 Usually you will need to modify the HTML code of the page and make some tests in local \(maybe using some Apache server\) **until you like the results.** Then, write that HTML code in the box.  
@@ -409,7 +409,7 @@ For the redirection you could **redirect the users to the legit main web page** 
 * Set a name
 * **Import the data** \(note that in order to use the template for the example you need the firstname, last name and email address of each user\)
 
-![](../.gitbook/assets/image%20%2825%29.png)
+![](../../.gitbook/assets/image%20%2825%29.png)
 
 ### Campaign
 
@@ -417,7 +417,7 @@ Finally, create a campaign selecting a name, the email template, the landing pag
 
 Note that the **Sending Profile allow to send a test email to see how will the final phishing email looks like**:
 
-![](../.gitbook/assets/image%20%28207%29.png)
+![](../../.gitbook/assets/image%20%28207%29.png)
 
 {% hint style="info" %}
 I would recommend to **send the test emails to 10min mails addresses** in order to avoid getting blacklisted making tests.
