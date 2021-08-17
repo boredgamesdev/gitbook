@@ -2,8 +2,6 @@
 
 * [HackTricks](README.md)
 * [Untitled](untitled.md)
-* [About the author](about-the-author.md)
-* [Getting Started in Hacking](getting-started-in-hacking.md)
 * [Pentesting Methodology](pentesting-methodology.md)
 * [External Recon Methodology](external-recon-methodology/README.md)
   * [Github Leaked Secrets](external-recon-methodology/github-leaked-secrets.md)
