@@ -38,7 +38,7 @@ LSA Protection prevents non-protected processes from interacting with LSASS. Mim
 [![Mimikatz-Event-Drop](https://adsecurity.org/wp-content/uploads/2015/09/Mimikatz-Event-Drop.png)](https://adsecurity.org/wp-content/uploads/2015/09/Mimikatz-Event-Drop.png)
 
 Note:  
-Run privilege::debug then event::drop to patch the event log.  Then run Event::Clear to clear the event log without any log cleared event \(1102\) being logged.
+Run privilege::debug then event::drop to patch the event log. Then run Event::Clear to clear the event log without any log cleared event \(1102\) being logged.
 
 ### KERBEROS
 
@@ -97,7 +97,7 @@ mimikatz “kerberos::golden /admin:LukeSkywalker /id:1106 /domain:lab.adsecurit
 #### \*\*\*\*[**Trust Ticket**](https://adsecurity.org/?p=1588)\*\*\*\*
 
 Once the Active Directory Trust password hash is determined, a trust ticket can be generated. The trust tickets are created using the shared password between 2 Domains that trust each other.  
-****[More background on Trust Tickets.](https://adsecurity.org/?p=1588)
+_\*\*_[More background on Trust Tickets.](https://adsecurity.org/?p=1588)
 
 **Dumping trust passwords \(trust keys\)**
 
@@ -123,7 +123,7 @@ Trust Ticket Specific Required Parameters:
 #### **More KERBEROS**
 
 **KERBEROS::List** – List all user tickets \(TGT and TGS\) in user memory. No special privileges required since it only displays the current user’s tickets.  
-****Similar to functionality of “klist”.
+_\*\*_Similar to functionality of “klist”.
 
 **KERBEROS::PTC** – pass the cache \(NT6\)  
 \*Nix systems like Mac OS, Linux,BSD, Unix, etc cache Kerberos credentials. This cached data can be copied off and passed using Mimikatz. Also useful for injecting Kerberos tickets in ccache files.
@@ -185,7 +185,7 @@ Pull password data for the Administrator user account in the rd.adsecurity.org d
 _Mimikatz “lsadump::dcsync /domain:rd.adsecurity.org /user:Administrator” exit_
 
 Pull password data for the ADSDC03 Domain Controller computer account in the lab.adsecurity.org domain:  
-_Mimikatz  “lsadump::dcsync /domain:lab.adsecurity.org /user:adsdc03$” exit_
+_Mimikatz “lsadump::dcsync /domain:lab.adsecurity.org /user:adsdc03$” exit_
 
 **LSADUMP::LSA** – Ask LSA Server to retrieve SAM/AD enterprise \(normal, patch on the fly or inject\). Use /patch for a subset of data, use /inject for everything. _Requires System or Debug rights._
 
@@ -269,7 +269,7 @@ This is extremely useful if an attacker has compromised a web server configured 
 
 The “kerberos::tickets” mimikatz command dumps the current logged-on user’s Kerberos tickets and does not require elevated rights. Leveraging the sekurlsa module’s capability to read from protected memory \(LSASS\), all Kerberos tickets on the system can be dumped.
 
-Command:  _mimikatz sekurlsa::tickets exit_
+Command: _mimikatz sekurlsa::tickets exit_
 
 * Dumps all authenticated Kerberos tickets on a system.
 * Requires administrator access \(with debug\) or Local SYSTEM rights
@@ -310,11 +310,4 @@ Find a domain admin credential on the box and use that token: _token::elevate /d
 **TS::Sessions** – List TS/RDP sessions.
 
 ![](https://adsecurity.org/wp-content/uploads/2017/11/Mimikatz-TS-Sessions.png)
-
-  
-  
-  
-
-
-
 

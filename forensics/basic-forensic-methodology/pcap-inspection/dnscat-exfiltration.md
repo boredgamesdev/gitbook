@@ -11,14 +11,14 @@ import struct
 f = ""
 last = ""
 for p in rdpcap('ch21.pcap'):
-	if p.haslayer(DNSQR) and not p.haslayer(DNSRR):
+    if p.haslayer(DNSQR) and not p.haslayer(DNSRR):
 
-		qry = p[DNSQR].qname.replace(".jz-n-bs.local.","").strip().split(".")
-		qry = ''.join(_.decode('hex') for _ in qry)[9:]
-		if last != qry:
-			print(qry)
-			f += qry
-		last = qry
+        qry = p[DNSQR].qname.replace(".jz-n-bs.local.","").strip().split(".")
+        qry = ''.join(_.decode('hex') for _ in qry)[9:]
+        if last != qry:
+            print(qry)
+            f += qry
+        last = qry
 
 #print(f)
 ```

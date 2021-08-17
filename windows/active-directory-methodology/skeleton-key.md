@@ -18,11 +18,11 @@ Performing the attack is very straightforward to do. It only requires the follow
 
 ![Injecting a skeleton key using the misc::skeleton into a domain controller with Mimikatz](https://blog.stealthbits.com/wp-content/uploads/2017/07/1-3.png)
 
-Here is an authentication for a Domain Admin member using the skeleton key as a password to get administrative access to a domain controller: 
+Here is an authentication for a Domain Admin member using the skeleton key as a password to get administrative access to a domain controller:
 
 ![Using the skeleton key as a password with the misc::skeleton command to get administrative access to a domain controller with the default password of Mimikatz](https://blog.stealthbits.com/wp-content/uploads/2017/07/2-5.png)
 
-Note: If you do get a message saying, “System error 86 has occurred. The specified network password is not correct”, just try using the domain\account format for the username and it should work. 
+Note: If you do get a message saying, “System error 86 has occurred. The specified network password is not correct”, just try using the domain\account format for the username and it should work.
 
 ![Using the domain\account format for the username if you get a message saying System error 86 has occurred The specified network password is not correct](https://blog.stealthbits.com/wp-content/uploads/2017/07/3-3.png)
 

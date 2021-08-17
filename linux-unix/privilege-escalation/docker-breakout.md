@@ -506,13 +506,13 @@ This is not a technique to breakout from a Docker container but a security featu
 
 **gVisor** is an application kernel, written in Go, that implements a substantial portion of the Linux system surface. It includes an [Open Container Initiative \(OCI\)](https://www.opencontainers.org/) runtime called `runsc` that provides an **isolation boundary between the application and the host kernel**. The `runsc` runtime integrates with Docker and Kubernetes, making it simple to run sandboxed containers.
 
-{% embed url="https://github.com/google/gvisor" %}
+{% embed url="https://github.com/google/gvisor" caption="" %}
 
 ## Kata Containers
 
 **Kata Containers** is an open source community working to build a secure container runtime with lightweight virtual machines that feel and perform like containers, but provide **stronger workload isolation using hardware virtualization** technology as a second layer of defense.
 
-{% embed url="https://katacontainers.io/" %}
+{% embed url="https://katacontainers.io/" caption="" %}
 
 ### Use containers securely
 

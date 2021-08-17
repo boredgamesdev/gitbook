@@ -108,5 +108,3 @@ Note that sector size is **512** and start is **2048**. Then mount the image lik
 mount disk.img /mnt -o ro,offset=$((2048*512))
 ```
 
-
-

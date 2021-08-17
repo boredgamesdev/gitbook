@@ -164,7 +164,7 @@ The **root directory** occupies a **specific position** for both FAT12 and FAT16
 * Address of the FAT table where the first cluster of the file starts
 * Size
 
-When a file is "deleted" using a FAT file system, the directory entry remains almost **unchanged** except for the **first character of the file name** \(modified to ****0xE5\), preserving most of the "deleted" file's name, along with its time stamp, file length and — most importantly — its physical location on the disk. The list of disk clusters occupied by the file will, however, be erased from the File Allocation Table, marking those sectors available for use by other files created or modified thereafter. In case of FAT32, it is additionally erased field responsible for upper 16 bits of file start cluster value.
+When a file is "deleted" using a FAT file system, the directory entry remains almost **unchanged** except for the **first character of the file name** \(modified to _\*\*_0xE5\), preserving most of the "deleted" file's name, along with its time stamp, file length and — most importantly — its physical location on the disk. The list of disk clusters occupied by the file will, however, be erased from the File Allocation Table, marking those sectors available for use by other files created or modified thereafter. In case of FAT32, it is additionally erased field responsible for upper 16 bits of file start cluster value.
 
 ### **NTFS**
 
@@ -206,7 +206,7 @@ Also, the OS usually saves a lot of information about file system changes and ba
 
 Note that this technique **doesn't work to retrieve fragmented files**. If a file **isn't stored in contiguous sectors**, then this technique won't be able to find it or at least part of it.
 
-There are several tools that you can use for file Carving indicating them the file-types you want search for 
+There are several tools that you can use for file Carving indicating them the file-types you want search for
 
 {% page-ref page="file-data-carving-recovery-tools.md" %}
 
@@ -219,7 +219,7 @@ For example, instead of looking for a complete file containing logged URLs, this
 
 ### Secure Deletion
 
-Obviously, there are ways to **"securely" delete files and part of logs about them**. For example, it's possible to **overwrite the content** of a file with junk data several times, and then **remove** the **logs** from the **$MFT** and **$LOGFILE** about the file, and **remove the Volume Shadow Copies**.   
+Obviously, there are ways to **"securely" delete files and part of logs about them**. For example, it's possible to **overwrite the content** of a file with junk data several times, and then **remove** the **logs** from the **$MFT** and **$LOGFILE** about the file, and **remove the Volume Shadow Copies**.  
 You may notice that even performing that action there might be **other parts where the existence of the file is still logged**, and that's true and part of the forensics professional job is to find them.
 
 ## References

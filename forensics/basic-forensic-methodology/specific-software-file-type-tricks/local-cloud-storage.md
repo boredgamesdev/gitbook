@@ -29,7 +29,7 @@ The table data of the database **`Sync_config.db`** contains the email address o
 
 ## Dropbox
 
-Dropbox uses **SQLite databases** to mange the files. In this   
+Dropbox uses **SQLite databases** to mange the files. In this  
 You can find the databases in the folders:
 
 * `\Users\<username>\AppData\Local\Dropbox`
@@ -65,7 +65,7 @@ Then you can use the tool [**DataProtectionDecryptor**](https://nirsoft.net/util
 
 ![](../../../.gitbook/assets/image%20%28448%29.png)
 
-If everything goes as expected, the tool will indicate the **primary key** that you need to **use to recover the original one**. To recover the original one, just use this [cyber\_chef receipt](https://gchq.github.io/CyberChef/#recipe=Derive_PBKDF2_key%28%7B'option':'Hex','string':'98FD6A76ECB87DE8DAB4623123402167'%7D,128,1066,'SHA1',%7B'option':'Hex','string':'0D638C092E8B82FC452883F95F355B8E'%7D%29) putting the primary key as the "passphrase" inside the receipt.
+If everything goes as expected, the tool will indicate the **primary key** that you need to **use to recover the original one**. To recover the original one, just use this \[cyber\_chef receipt\]\([https://gchq.github.io/CyberChef/\#recipe=Derive\_PBKDF2\_key%28%7B'option':'Hex','string':'98FD6A76ECB87DE8DAB4623123402167'%7D,128,1066,'SHA1',%7B'option':'Hex','string':'0D638C092E8B82FC452883F95F355B8E'%7D%29](https://gchq.github.io/CyberChef/#recipe=Derive_PBKDF2_key%28%7B'option':'Hex','string':'98FD6A76ECB87DE8DAB4623123402167'%7D,128,1066,'SHA1',%7B'option':'Hex','string':'0D638C092E8B82FC452883F95F355B8E'%7D%29)\) putting the primary key as the "passphrase" inside the receipt.
 
 The resulting hex is the final key used to encrypt the databases which can be decrypted with:
 

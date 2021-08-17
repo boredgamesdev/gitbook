@@ -6,7 +6,7 @@ This a feature that a Domain Administrator can set to any **Computer** inside th
 
 So if a domain admin logins inside a Computer with "Unconstrained Delegation" feature activated, and you have local admin privileges inside that machine, you will be able to dump the ticket and impersonate the Domain Admin anywhere \(domain privesc\).
 
- You can **find Computer objects with this attribute** checking if the [userAccountControl](https://msdn.microsoft.com/en-us/library/ms680832%28v=vs.85%29.aspx) attribute contains [ADS\_UF\_TRUSTED\_FOR\_DELEGATION](https://msdn.microsoft.com/en-us/library/aa772300%28v=vs.85%29.aspx). You can do this with an LDAP filter of ‘\(userAccountControl:1.2.840.113556.1.4.803:=524288\)’, which is what powerview does:
+You can **find Computer objects with this attribute** checking if the [userAccountControl](https://msdn.microsoft.com/en-us/library/ms680832%28v=vs.85%29.aspx) attribute contains [ADS\_UF\_TRUSTED\_FOR\_DELEGATION](https://msdn.microsoft.com/en-us/library/aa772300%28v=vs.85%29.aspx). You can do this with an LDAP filter of ‘\(userAccountControl:1.2.840.113556.1.4.803:=524288\)’, which is what powerview does:
 
 ```bash
 Get-NetComputer -Unconstrained #DCs always appear but aren't useful for privesc

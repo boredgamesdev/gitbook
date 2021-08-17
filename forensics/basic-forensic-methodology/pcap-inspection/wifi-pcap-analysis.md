@@ -36,7 +36,3 @@ Edit --&gt; Preferences --&gt; Protocols --&gt; IEEE 802.11--&gt; Edit
 
 ![](../../../.gitbook/assets/image%20%28427%29.png)
 
-
-
-
-

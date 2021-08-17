@@ -86,7 +86,7 @@ VistaSP0x86                                   - A Profile for Windows Vista SP0 
 
 You can **download Linux and Mac profiles** from [https://github.com/volatilityfoundation/profiles](https://github.com/volatilityfoundation/profiles)
 
-In the previous chunk you can see that the profile is called `LinuxCentOS7_3_10_0-123_el7_x86_64_profilex64`  , and you can use it executing something like:
+In the previous chunk you can see that the profile is called `LinuxCentOS7_3_10_0-123_el7_x86_64_profilex64` , and you can use it executing something like:
 
 ```bash
 ./vol -f file.dmp --plugins=. --profile=LinuxCentOS7_3_10_0-123_el7_x86_64_profilex64 linux_netscan
@@ -238,7 +238,7 @@ python3 vol.py -f file.dmp windows.envars.Envars [--pid <pid>] #Display process 
 ```bash
 volatility --profile=PROFILE envars -f file.dmp [--pid <pid>] #Display process environment variables
 
-volatility --profile=PROFILE -f file.dmp linux_psenv [-p <pid>] #Get env of process. runlevel var means the runlevel where the proc is initated 
+volatility --profile=PROFILE -f file.dmp linux_psenv [-p <pid>] #Get env of process. runlevel var means the runlevel where the proc is initated
 ```
 {% endtab %}
 {% endtabs %}
@@ -314,7 +314,6 @@ volatility --profile=Win7SP1x86_23418 -f file.dmp handles [--pid=<pid>]
 ```bash
 ./vol.py -f file.dmp windows.dlllist.DllList [--pid <pid>] #List dlls used by each
 ./vol.py -f file.dmp windows.dumpfiles.DumpFiles --pid <pid> #Dump the .exe and dlls of the process in the current directory process
-
 ```
 {% endtab %}
 
@@ -368,7 +367,7 @@ volatility --profile=Win7SP1x86_23418 yarascan -Y "https://" -p 3692,3840,3976,3
 
 ### UserAssist
 
- **Windows** systems maintain a set of **keys** in the registry database \(**UserAssist keys**\) to keep track of programs that executed. The number of executions and last execution date and time are available in these **keys**.
+**Windows** systems maintain a set of **keys** in the registry database \(**UserAssist keys**\) to keep track of programs that executed. The number of executions and last execution date and time are available in these **keys**.
 
 {% tabs %}
 {% tab title="vol3" %}
@@ -378,7 +377,7 @@ volatility --profile=Win7SP1x86_23418 yarascan -Y "https://" -p 3692,3840,3976,3
 {% endtab %}
 
 {% tab title="vol2" %}
-```
+```text
 volatility --profile=Win7SP1x86_23418 -f file.dmp userassist
 ```
 {% endtab %}
@@ -697,7 +696,7 @@ It's possible to **read from memory the bash history.** You could also dump the 
 {% endtab %}
 
 {% tab title="vol2" %}
-```
+```text
 volatility --profile=Win7SP1x86_23418 -f file.dmp linux_bash
 ```
 {% endtab %}
@@ -713,7 +712,7 @@ volatility --profile=Win7SP1x86_23418 -f file.dmp linux_bash
 {% endtab %}
 
 {% tab title="vol2" %}
-```
+```text
 volatility --profile=Win7SP1x86_23418 -f timeliner
 ```
 {% endtab %}
@@ -770,6 +769,4 @@ volatility --profile=Win7SP1x86_23418 mbrparser -f file.dmp
 ```
 
 The MBR holds the information on how the logical partitions, containing [file systems](https://en.wikipedia.org/wiki/File_system), are organized on that medium. The MBR also contains executable code to function as a loader for the installed operating system—usually by passing control over to the loader's [second stage](https://en.wikipedia.org/wiki/Second-stage_boot_loader), or in conjunction with each partition's [volume boot record](https://en.wikipedia.org/wiki/Volume_boot_record) \(VBR\). This MBR code is usually referred to as a [boot loader](https://en.wikipedia.org/wiki/Boot_loader). From [here](https://en.wikipedia.org/wiki/Master_boot_record).
-
-
 

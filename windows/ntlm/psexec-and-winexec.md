@@ -35,5 +35,3 @@ Extracted from here: [https://blog.ropnop.com/using-credentials-to-own-windows-b
 
 ![](../../.gitbook/assets/image%20%28151%29.png)
 
-
-

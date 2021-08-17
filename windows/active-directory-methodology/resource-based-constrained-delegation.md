@@ -6,12 +6,12 @@ This is similar to the basic [Constrained Delegation](constrained-delegation.md)
 
 In this case, the constrained object will have an attribute called _**msDS-AllowedToActOnBehalfOfOtherIdentity**_ with the name of the user that can impersonate any other user against it.
 
-Another important difference from this Constrained Delegation to the other delegations is that any user with **write permissions over a machine account** \(_GenericAll/GenericWrite/WriteDacl/WriteProperty/etc_\) ****can set the _**msDS-AllowedToActOnBehalfOfOtherIdentity**_ \(In the other forms of Delegation you needed domain admin privs\).
+Another important difference from this Constrained Delegation to the other delegations is that any user with **write permissions over a machine account** \(_GenericAll/GenericWrite/WriteDacl/WriteProperty/etc_\) **\*\*can set the \_**msDS-AllowedToActOnBehalfOfOtherIdentity\*\*\_ \(In the other forms of Delegation you needed domain admin privs\).
 
 ### New Concepts
 
-Back in Constrained Delegation it was told that the _**TrustedToAuthForDelegation**_ flag inside the _userAccountControl_  value of the user is needed to perform a **S4U2Self.** But that's not completely truth.  
-The reality is that even without that value, you can perform a **S4U2Self** against any user if you are a **service** \(have a SPN\) but, if you **have** _**TrustedToAuthForDelegation**_  the returned TGS will be **Forwardable** and if you **don't have** that flag the returned TGS **won't** be **Forwardable**.
+Back in Constrained Delegation it was told that the _**TrustedToAuthForDelegation**_ flag inside the _userAccountControl_ value of the user is needed to perform a **S4U2Self.** But that's not completely truth.  
+The reality is that even without that value, you can perform a **S4U2Self** against any user if you are a **service** \(have a SPN\) but, if you **have** _**TrustedToAuthForDelegation**_ the returned TGS will be **Forwardable** and if you **don't have** that flag the returned TGS **won't** be **Forwardable**.
 
 However, if the **TGS** used in **S4U2Proxy** is **NOT Forwardable** trying to abuse a **basic Constrain Delegation** it **won't work**. But if you are trying to exploit a **Resource-Based constrain delegation, it will work** \(this is not a vulnerability, it's a feature, apparently\).
 
@@ -21,7 +21,7 @@ However, if the **TGS** used in **S4U2Proxy** is **NOT Forwardable** trying to a
 
 Suppose that the attacker has already **write equivalent privileges over the victim computer**.
 
-1. The attacker **compromises** an account that has a **SPN** or **creates one** \(“Service A”\). Note that **any** _Admin User_ without any other special privilege can **create** up ****until 10 **Computer objects \(**_**MachineAccountQuota**_**\)** and set them a **SPN**. So the attacker can just create a Computer object and set a SPN.
+1. The attacker **compromises** an account that has a **SPN** or **creates one** \(“Service A”\). Note that **any** _Admin User_ without any other special privilege can **create** up **\*\*until 10** Computer objects \(**\_**MachineAccountQuota**\_**\) **and set them a** SPN\*\*. So the attacker can just create a Computer object and set a SPN.
 2. The attacker configures **resource-based constrained delegation from Service A to the victim host**. 
 3. The attacker uses Rubeus to perform a **full S4U attack** \(S4U2Self and S4U2Proxy\) from Service A to Service B for a user **with privileged access to Service B**. 
    1. S4U2Self \(from the SPN compromised/created account\): Ask for a **TGS of Administrator to me** \(Not Forwardable\).
@@ -134,15 +134,11 @@ Lear about the [**available service tickets here**](silver-ticket.md#available-s
 
 ## References
 
-{% embed url="https://shenaniganslabs.io/2019/01/28/Wagging-the-Dog.html" %}
+{% embed url="https://shenaniganslabs.io/2019/01/28/Wagging-the-Dog.html" caption="" %}
 
-{% embed url="https://www.harmj0y.net/blog/redteaming/another-word-on-delegation/" %}
+{% embed url="https://www.harmj0y.net/blog/redteaming/another-word-on-delegation/" caption="" %}
 
-{% embed url="https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/resource-based-constrained-delegation-ad-computer-object-take-over-and-privilged-code-execution\#modifying-target-computers-ad-object" %}
+{% embed url="https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/resource-based-constrained-delegation-ad-computer-object-take-over-and-privilged-code-execution\#modifying-target-computers-ad-object" caption="" %}
 
-{% embed url="https://blog.stealthbits.com/resource-based-constrained-delegation-abuse/" %}
-
-
-
-
+{% embed url="https://blog.stealthbits.com/resource-based-constrained-delegation-abuse/" caption="" %}
 

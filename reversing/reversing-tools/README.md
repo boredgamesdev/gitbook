@@ -117,7 +117,7 @@ But, how can you get to the code of the DLL that was lodaded? Using this method,
 ### Using x64dbg/x32dbg
 
 * **Load rundll32** \(64bits in C:\Windows\System32\rundll32.exe and 32 bits in C:\Windows\SysWOW64\rundll32.exe\)
-* **Change the Command Line** \( _File --&gt; Change Command Line_ \) and set the path of the dll and the function that you want to call, for example: "C:\Windows\SysWOW64\rundll32.exe" "Z:\shared\Cybercamp\rev2\\14.ridii\_2.dll",DLLMain
+* **Change the Command Line** \( _File --&gt; Change Command Line_ \) and set the path of the dll and the function that you want to call, for example: "C:\Windows\SysWOW64\rundll32.exe" "Z:\shared\Cybercamp\rev2\14.ridii\_2.dll",DLLMain
 * Change _Options --&gt; Settings_ and select "**DLL Entry**".
 * Then **start the execution**, the debugger will stop at each dll main, at some point you will **stop in the dll Entry of your dll**. From there, just search for the points where you want to put a breakpoint.
 
@@ -129,7 +129,7 @@ Then, looking to this ca see when the execution was stopped in the dll you want 
 
 ## ARM & MIPS
 
-{% embed url="https://github.com/nongiach/arm\_now" %}
+{% embed url="https://github.com/nongiach/arm\_now" caption="" %}
 
 ## Shellcodes
 
@@ -171,8 +171,8 @@ You can see the stack for example inside a hex dump:
 
 ### Deobfuscating shellcode and getting executed functions
 
-You should try ****[**scdbg**](http://sandsprite.com/blogs/index.php?uid=7&pid=152).  
-It will tell you things like **which functions** is the shellcode using and if the shellcode is **decoding** itself in memory.
+You should try **\*\*\[**scdbg**\]\(**[http://sandsprite.com/blogs/index.php?uid=7&pid=152](http://sandsprite.com/blogs/index.php?uid=7&pid=152)**\).  
+It will tell you things like** which functions **is the shellcode using and if the shellcode is** decoding\*\* itself in memory.
 
 ```bash
 scdbg.exe -f shellcode # Get info
@@ -191,7 +191,7 @@ The **Create Dump** option will dump the final shellcode if any change is done t
 
 ### Disassembling using CyberChef
 
-Upload you shellcode file as input and use the following receipt to decompile it: [https://gchq.github.io/CyberChef/\#recipe=To\_Hex\('Space',0\)Disassemble\_x86\('32','Full%20x86%20architecture',16,0,true,true\)](https://gchq.github.io/CyberChef/#recipe=To_Hex%28'Space',0%29Disassemble_x86%28'32','Full%20x86%20architecture',16,0,true,true%29)
+Upload you shellcode file as input and use the following receipt to decompile it: \[[https://gchq.github.io/CyberChef/\#recipe=To\_Hex\('Space',0\)Disassemble\_x86\('32','Full x86 architecture',16,0,true,true\)\]\(https://gchq.github.io/CyberChef/\#recipe=To\_Hex%28'Space',0%29Disassemble\_x86%28'32','Full x86 architecture',16,0,true,true%29](https://gchq.github.io/CyberChef/#recipe=To_Hex%28'Space',0%29Disassemble_x86%28'32','Full%20x86%20architecture',16,0,true,true%29]%28https://gchq.github.io/CyberChef/#recipe=To_Hex%28'Space',0%29Disassemble_x86%28'32','Full%20x86%20architecture',16,0,true,true%29)\)
 
 ## [Movfuscator](https://github.com/xoreaxeaxeax/movfuscator)
 
@@ -209,7 +209,7 @@ apt-get install libz3-dev
 
 And [install keystone](https://github.com/keystone-engine/keystone/blob/master/docs/COMPILE-NIX.md) \(`apt-get install cmake; mkdir build; cd build; ../make-share.sh; make install`\)
 
-If you are playing a **CTF, this workaround to find the flag** could be very useful: [https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html](https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html) 
+If you are playing a **CTF, this workaround to find the flag** could be very useful: [https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html](https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html)
 
 ## Delphi
 

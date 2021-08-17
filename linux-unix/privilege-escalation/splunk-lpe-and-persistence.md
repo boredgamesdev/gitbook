@@ -4,7 +4,7 @@ If **enumerating** a machine **internally** or **externally** you find **Splunk 
 
 Also if you are **already root and the Splunk service is not listening only on localhost**, you can **steal** the **password** file **from** the Splunk service and **crack** the passwords, or **add new** credentials to it. And maintain persistence on the host.
 
-In the first  image below you can see how a Splunkd web page looks like.
+In the first image below you can see how a Splunkd web page looks like.
 
 **The following information was copied from** [**https://eapolsniper.github.io/2020/08/14/Abusing-Splunk-Forwarders-For-RCE-And-Persistence/**](https://eapolsniper.github.io/2020/08/14/Abusing-Splunk-Forwarders-For-RCE-And-Persistence/)\*\*\*\*
 
@@ -24,7 +24,7 @@ Splunk UF passwords are relatively easy to acquire, see the secion Common Passwo
 
 Splunk is a data aggregation and search tool often used as a Security Information and Event Monitoring \(SIEM\) system. Splunk Enterprise Server is a web application which runs on a server, with agents, called Universal Forwarders, which are installed on every system in the network. Splunk provides agent binaries for Windows, Linux, Mac, and Unix. Many organizations use Syslog to send data to Splunk instead of installing an agent on Linux/Unix hosts but agent installation is becomming increasingly popular.
 
-Universal Forwarder is accessible on each host at https://host:8089. Accessing any of the protected API calls, such as /service/ pops up a Basic authentication box. The username is always admin, and the password default used to be changeme until 2016 when Splunk required any new installations to set a password of 8 characters or higher. As you will note in my demo, complexity is not a requirement as my agent password is 12345678. A remote attacker can brute force the password without lockout, which is a necessity of a log host, since if the account locked out then logs would no longer be sent to the Splunk server and an attacker could use this to hide their attacks. The following screenshot shows the Universal Forwarder agent, this initial page is accessible without authentication and can be used to enumerate hosts running Splunk Universal Forwarder.
+Universal Forwarder is accessible on each host at [https://host:8089](https://host:8089). Accessing any of the protected API calls, such as /service/ pops up a Basic authentication box. The username is always admin, and the password default used to be changeme until 2016 when Splunk required any new installations to set a password of 8 characters or higher. As you will note in my demo, complexity is not a requirement as my agent password is 12345678. A remote attacker can brute force the password without lockout, which is a necessity of a log host, since if the account locked out then logs would no longer be sent to the Splunk server and an attacker could use this to hide their attacks. The following screenshot shows the Universal Forwarder agent, this initial page is accessible without authentication and can be used to enumerate hosts running Splunk Universal Forwarder.
 
 ![0](https://eapolsniper.github.io/assets/2020AUG14/11_SplunkAgent.png)
 
@@ -135,15 +135,15 @@ I recommend implementing all of the following solutions to provide defense in de
 
 Usable public exploits:
 
-* https://github.com/cnotin/SplunkWhisperer2/tree/master/PySplunkWhisperer2
-* https://www.exploit-db.com/exploits/46238
-* https://www.exploit-db.com/exploits/46487
+* [https://github.com/cnotin/SplunkWhisperer2/tree/master/PySplunkWhisperer2](https://github.com/cnotin/SplunkWhisperer2/tree/master/PySplunkWhisperer2)
+* [https://www.exploit-db.com/exploits/46238](https://www.exploit-db.com/exploits/46238)
+* [https://www.exploit-db.com/exploits/46487](https://www.exploit-db.com/exploits/46487)
 
 Related blog posts:
 
-* https://clement.notin.org/blog/2019/02/25/Splunk-Universal-Forwarder-Hijacking-2-SplunkWhisperer2/
-* https://medium.com/@airman604/splunk-universal-forwarder-hijacking-5899c3e0e6b2
-* https://www.hurricanelabs.com/splunk-tutorials/using-splunk-as-an-offensive-security-tool
+* [https://clement.notin.org/blog/2019/02/25/Splunk-Universal-Forwarder-Hijacking-2-SplunkWhisperer2/](https://clement.notin.org/blog/2019/02/25/Splunk-Universal-Forwarder-Hijacking-2-SplunkWhisperer2/)
+* [https://medium.com/@airman604/splunk-universal-forwarder-hijacking-5899c3e0e6b2](https://medium.com/@airman604/splunk-universal-forwarder-hijacking-5899c3e0e6b2)
+* [https://www.hurricanelabs.com/splunk-tutorials/using-splunk-as-an-offensive-security-tool](https://www.hurricanelabs.com/splunk-tutorials/using-splunk-as-an-offensive-security-tool)
 
 _\*\* Note: \*\*_ This issue is a serious issue with Splunk systems and it has been exploited by other testers for years. While Remote Code Execution is an intended feature of Splunk Universal Forwarder, the implimentaion of this is dangerous. I attempted to submit this bug via Splunk’s bug bounty program in the very unlikely chance they are not aware of the design implications, but was notified that any bug submissions implement the Bug Crowd/Splunk disclosure policy which states no details of the vulnerability may be discussed publically _ever_ without Splunk’s permission. I requested a 90 day disclosure timeline and was denied. As such, I did not responsibly disclose this since I am reasonably sure Splunk is aware of the issue and has chosen to ignore it, I feel this could severely impact companies, and it is the responsibility of the infosec community to educate businesses.
 

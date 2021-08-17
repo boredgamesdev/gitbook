@@ -93,7 +93,7 @@ azscan #Run, login before with `az login`
 ![](../.gitbook/assets/image%20%2889%29.png)
 
 * **Standard tier** is recommended instead of free tier \(see the tier being used in _Pricing & Settings_ or in [https://portal.azure.com/\#blade/Microsoft\_Azure\_Security/SecurityMenuBlade/24](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/24)\)
-* **Periodic SQL servers scans**: 
+* **Periodic SQL servers scans**:
 
   _Select the SQL server_ --&gt; _Make sure that 'Advanced data security' is set to 'On'_ --&gt; _Under 'Vulnerability assessment settings', set 'Periodic recurring scans' to 'On', and configure a storage account for storing vulnerability assessment scan results_ --&gt; _Click Save_
 

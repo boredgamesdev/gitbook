@@ -6,7 +6,7 @@
 
 ## Chroot limitation
 
-From [wikipedia](https://en.wikipedia.org/wiki/Chroot#Limitations):  The chroot mechanism is **not intended to defend** against intentional tampering by **privileged** \(**root**\) **users**. On most systems, chroot contexts do not stack properly and chrooted programs **with sufficient privileges may perform a second chroot to break out**.
+From [wikipedia](https://en.wikipedia.org/wiki/Chroot#Limitations): The chroot mechanism is **not intended to defend** against intentional tampering by **privileged** \(**root**\) **users**. On most systems, chroot contexts do not stack properly and chrooted programs **with sufficient privileges may perform a second chroot to break out**.
 
 Therefore, if you are **root** inside a chroot you **can escape** creating **another chroot**. However, in several cases inside the first chroot you won't be able to execute the chroot command, therefore you will need to compile a binary like the following one and run it:
 
@@ -111,7 +111,7 @@ ssh user@<IP> -t "() { :; }; sh -i "
 
 ```bash
 declare -n PATH; export PATH=/bin;bash -i
- 
+
 BASH_CMDS[shell]=/bin/bash;shell -i
 ```
 
@@ -179,6 +179,4 @@ for i in seq 1000; do echo "for k1,chr in pairs(string) do for k2,exec in pairs(
 ```bash
 debug.debug()
 ```
-
-
 

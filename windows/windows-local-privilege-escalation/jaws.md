@@ -1,7 +1,5 @@
 # JAWS
 
-
-
 ## Start
 
 ```text

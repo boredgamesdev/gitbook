@@ -8,10 +8,10 @@
 
 ```bash
 # Allow members of group sudo to execute any command
-%sudo	ALL=(ALL:ALL) ALL
+%sudo    ALL=(ALL:ALL) ALL
 
 # Allow members of group admin to execute any command
-%admin 	ALL=(ALL:ALL) ALL
+%admin     ALL=(ALL:ALL) ALL
 ```
 
 This means that **any user that belongs to the group sudo or admin can execute anything as sudo**.
@@ -75,7 +75,7 @@ pkttyagent --process <PID of session1> #Step 2, attach pkttyagent to session1
 **Sometimes**, **by default** inside the **/etc/sudoers** file you can find this line:
 
 ```text
-%wheel	ALL=(ALL:ALL) ALL
+%wheel    ALL=(ALL:ALL) ALL
 ```
 
 This means that **any user that belongs to the group wheel can execute anything as sudo**.
@@ -98,7 +98,7 @@ So, read the file and try to **crack some hashes**.
 
 ## Disk Group
 
- This privilege is almost **equivalent to root access** as you can access all the data inside of the machine.
+This privilege is almost **equivalent to root access** as you can access all the data inside of the machine.
 
 Files:`/dev/sd[a-z][1-9]`
 
@@ -179,9 +179,9 @@ Finally, if you don't like any of the suggestions of before, or they aren't work
 
 If you have write permissions over the docker socket read [**this post about how to escalate privileges abusing the docker socket**](../#writable-docker-socket)**.**
 
-{% embed url="https://github.com/KrustyHack/docker-privilege-escalation" %}
+{% embed url="https://github.com/KrustyHack/docker-privilege-escalation" caption="" %}
 
-{% embed url="https://fosterelli.co/privilege-escalation-via-docker.html" %}
+{% embed url="https://fosterelli.co/privilege-escalation-via-docker.html" caption="" %}
 
 ## lxc/lxd Group
 

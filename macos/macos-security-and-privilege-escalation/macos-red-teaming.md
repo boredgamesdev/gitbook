@@ -90,8 +90,6 @@ MacOS Red Teaming is different from a regular Windows Red Teaming as usually **M
 
 ![](../../.gitbook/assets/image%20%28562%29.png)
 
-### 
-
 ## References
 
 * [https://www.youtube.com/watch?v=IiMladUbL6E](https://www.youtube.com/watch?v=IiMladUbL6E)

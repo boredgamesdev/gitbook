@@ -65,7 +65,7 @@ org.freedesktop.DBus                     1 systemd         root             -   
 org.freedesktop.PackageKit               - -               -                (activatable) -                         - 
 org.freedesktop.PolicyKit1               - -               -                (activatable) -                         - 
 org.freedesktop.hostname1                - -               -                (activatable) -                         - 
-org.freedesktop.locale1                  - -               -                (activatable) -                         - 
+org.freedesktop.locale1                  - -               -                (activatable) -                         -
 ```
 
 ### Service Object Info
@@ -214,10 +214,10 @@ As user **qtc inside the host "oouch"** you can find an **unexpected D-Bus confi
         <allow own="htb.oouch.Block"/>
     </policy>
 
-	<policy user="www-data">
-		<allow send_destination="htb.oouch.Block"/>
-		<allow receive_sender="htb.oouch.Block"/>
-	</policy>
+    <policy user="www-data">
+        <allow send_destination="htb.oouch.Block"/>
+        <allow receive_sender="htb.oouch.Block"/>
+    </policy>
 
 </busconfig>
 ```
@@ -292,7 +292,7 @@ dbus-send --system --print-reply --dest=htb.oouch.Block /htb/oouch/Block htb.oou
 
 _Note that in `htb.oouch.Block.Block`, the first part \(`htb.oouch.Block`\) references the service object and the last part \(`.Block`\) references the method name._
 
-### C code 
+### C code
 
 ```c
 #include <stdio.h>

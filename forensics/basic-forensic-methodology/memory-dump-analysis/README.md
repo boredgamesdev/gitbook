@@ -27,7 +27,3 @@ Anyway Visual Studio isn't the best tool to perform a analysis in depth of the d
 
 You should **open** it using **IDA** or **Radare** to inspection it in **depth**.
 
-
-
-
-

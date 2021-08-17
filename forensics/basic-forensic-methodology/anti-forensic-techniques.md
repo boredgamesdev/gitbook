@@ -3,7 +3,7 @@
 ## Timestamps
 
 An attacker may be interested in **changing the timestamps of files** to avoid being detected.  
-It's possible to find the timestamps inside the MFT in attributes `$STANDARD_INFORMATION` __and __`$FILE_NAME`.
+It's possible to find the timestamps inside the MFT in attributes `$STANDARD_INFORMATION` **and** `$FILE_NAME`.
 
 Both attributes have 4 timestamps: **Modification**, **access**, **creation**, and **MFT registry modification** \(MACE or MACB\).
 

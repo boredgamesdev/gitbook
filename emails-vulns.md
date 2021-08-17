@@ -8,7 +8,7 @@ The symbols: **+, -** and **{}** in rare occasions can be used for tagging and i
 
 * E.g. john.doe+intigriti@example.com → john.doe@example.com
 
-**Comments between parentheses \(\)** at the beginning or the end will also be ignored 
+**Comments between parentheses \(\)** at the beginning or the end will also be ignored
 
 * E.g. john.doe\(intigriti\)@example.com → john.doe@example.com
 
@@ -42,7 +42,7 @@ _Note that salesforce indicates if the given email was or not verified but so th
 
 ## Reply-To
 
-You can send an email using _**From: company.com**_ ****and _**Replay-To: attacker.com**_ and if any **automatic reply** is sent due to the email was sent **from** an **internal address** the **attacker** may be able to **receive** that **response**.
+You can send an email using _**From: company.com**_ **\*\*and \_**Replay-To: attacker.com**\_ and if any** automatic reply **is sent due to the email was sent** from **an** internal address **the** attacker **may be able to** receive **that** response\*\*.
 
 ## **References**
 

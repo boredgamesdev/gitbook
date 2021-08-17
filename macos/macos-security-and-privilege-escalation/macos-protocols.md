@@ -12,7 +12,7 @@ Zero Configuration Networking, such as Bonjour provides:
 The device will get an **IP address in the range 169.254/16** and will check if any other device is using that IP address. If not, it will keep the IP address. Macs keeps an entry in their routing table for this subnet: `netstat -rn | grep 169`
 
 For DNS the **Multicast DNS \(mDNS\) protocol is used**. [**mDNS** **services** listen in port **5353/UDP**](../../pentesting/5353-udp-multicast-dns-mdns.md), use **regular DNS queries** and use the **multicast address 224.0.0.251** instead of sending the request just to an IP address. Any machine listening these request will respond, usually to a multicast address, so all the devices can update their tables.  
-Each device will **select its own name** when accessing the network, the device will choose a name **ended in .local** \(might be based on the hostname or a completely random one\). 
+Each device will **select its own name** when accessing the network, the device will choose a name **ended in .local** \(might be based on the hostname or a completely random one\).
 
 For **discovering services DNS Service Discovery \(DNS-SD\)** is used.
 

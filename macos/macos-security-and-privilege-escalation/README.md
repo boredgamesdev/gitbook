@@ -55,7 +55,7 @@ First of all, please note that **most of the tricks about privilege escalation a
 
 ### Common users
 
-* **Daemon**: User reserved for system daemons. The default daemon account names usually start with  a "\_":
+* **Daemon**: User reserved for system daemons. The default daemon account names usually start with a "\_":
 
   ```bash
   _amavisd, _analyticsd, _appinstalld, _appleevents, _applepay, _appowner, _appserver, _appstore, _ard, _assetcache, _astris, _atsserver, _avbdeviced, _calendar, _captiveagent, _ces, _clamav, _cmiodalassistants, _coreaudiod, _coremediaiod, _coreml, _ctkd, _cvmsroot, _cvs, _cyrus, _datadetectors, _demod, _devdocs, _devicemgr, _diskimagesiod, _displaypolicyd, _distnote, _dovecot, _dovenull, _dpaudio, _driverkit, _eppc, _findmydevice, _fpsd, _ftp, _fud, _gamecontrollerd, _geod, _hidd, _iconservices, _installassistant, _installcoordinationd, _installer, _jabber, _kadmin_admin, _kadmin_changepw, _knowledgegraphd, _krb_anonymous, _krb_changepw, _krb_kadmin, _krb_kerberos, _krb_krbtgt, _krbfast, _krbtgt, _launchservicesd, _lda, _locationd, _logd, _lp, _mailman, _mbsetupuser, _mcxalr, _mdnsresponder, _mobileasset, _mysql, _nearbyd, _netbios, _netstatistics, _networkd, _nsurlsessiond, _nsurlstoraged, _oahd, _ondemand, _postfix, _postgres, _qtss, _reportmemoryexception, _rmd, _sandbox, _screensaver, _scsd, _securityagent, _softwareupdate, _spotlight, _sshd, _svn, _taskgated, _teamsserver, _timed, _timezone, _tokend, _trustd, _trustevaluationagent, _unknown, _update_sharing, _usbmuxd, _uucp, _warmd, _webauthserver, _windowserver, _www, _wwwproxy, _xserverdocs
@@ -296,7 +296,7 @@ Bypasses examples:
 ### SIP - System Integrity Protection
 
 This protection was enabled to **help keep root level malware from taking over certain parts** of the operating system. Although this means **applying limitations to the root user** many find it to be worthwhile trade off.  
-The most notable of these limitations are that **users can no longer create, modify, or delete files inside** of the following four directories in general: 
+The most notable of these limitations are that **users can no longer create, modify, or delete files inside** of the following four directories in general:
 
 * /System
 * /bin
@@ -308,9 +308,9 @@ For example, the config lines:
 
 ```bash
         /usr
-*				/usr/libexec/cups
-*				/usr/local
-*				/usr/share/man
+*                /usr/libexec/cups
+*                /usr/local
+*                /usr/share/man
 ```
 
 Means that `/usr` **cannot be modified** **except** for the **3 allowed** folders allowed.
@@ -329,7 +329,7 @@ ls -lO /System/Library/LaunchDaemons/com.apple.UpdateSettings.plist
 -rw-r--r--@ 1 root  wheel  restricted,compressed 412  1 Jan  2020 /System/Library/LaunchDaemons/com.apple.UpdateSettings.plist
 ```
 
-**SIP** handles a number of **other limitations as well**. Like it **doesn't allows for the loading of unsigned kexts**.  SIP is also responsible for **ensuring** that no OS X **system processes are debugged**. This also means that Apple put a stop to dtrace inspecting system processes.
+**SIP** handles a number of **other limitations as well**. Like it **doesn't allows for the loading of unsigned kexts**. SIP is also responsible for **ensuring** that no OS X **system processes are debugged**. This also means that Apple put a stop to dtrace inspecting system processes.
 
 Check if SIP is enabled with:
 
@@ -338,8 +338,8 @@ csrutil status
 System Integrity Protection status: enabled.
 ```
 
-If you want to **disable** **it**, you need to put the computer in recovery mode \(start it pressing command+R\) and execute: `csrutil disable`   
-You can also maintain it **enable but without debugging protections** doing: 
+If you want to **disable** **it**, you need to put the computer in recovery mode \(start it pressing command+R\) and execute: `csrutil disable`  
+You can also maintain it **enable but without debugging protections** doing:
 
 ```bash
 csrutil enable --without debug
@@ -364,7 +364,7 @@ spctl --assess --verbose /Applications/Safari.app
 
 ## Installed Software & Services
 
-Check for **suspicious** applications installed and **privileges** over the.installed resources: 
+Check for **suspicious** applications installed and **privileges** over the.installed resources:
 
 ```bash
 system_profiler SPApplicationsDataType #Installed Apps
@@ -482,7 +482,7 @@ For more information about [**kernel extensions check this section**](mac-os-arc
 
 ### **Login Items**
 
-In System Preferences -&gt; Users & Groups -&gt; **Login Items** you can find  **items to be executed when the user logs in**.  
+In System Preferences -&gt; Users & Groups -&gt; **Login Items** you can find **items to be executed when the user logs in**.  
 It it's possible to list them, add and remove from the command line:
 
 ```bash
@@ -493,7 +493,7 @@ osascript -e 'tell application "System Events" to get the name of every login it
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/path/to/itemname", hidden:false}' 
 
 #Remove an item:
-osascript -e 'tell application "System Events" to delete login item "itemname"' 
+osascript -e 'tell application "System Events" to delete login item "itemname"'
 ```
 
 These items are stored in the file /Users/&lt;username&gt;/Library/Application Support/com.apple.backgroundtaskmanagementagent
@@ -647,12 +647,12 @@ CheckForNetwork()
     local test
 
     if [ -z "${NETWORKUP:=}" ]; then
-	test=$(ifconfig -a inet 2>/dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)
-	if [ "${test}" -gt 0 ]; then
-	    NETWORKUP="-YES-"
-	else
-	    NETWORKUP="-NO-"
-	fi
+    test=$(ifconfig -a inet 2>/dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)
+    if [ "${test}" -gt 0 ]; then
+        NETWORKUP="-YES-"
+    else
+        NETWORKUP="-NO-"
+    fi
     fi
 }
 
@@ -668,19 +668,19 @@ GetPID ()
     local     pid=""
 
     if [ -f "${pidfile}" ]; then
-	pid=$(head -1 "${pidfile}")
-	if ! kill -0 "${pid}" 2> /dev/null; then
-	    echo "Bad pid file $pidfile; deleting."
-	    pid=""
-	    rm -f "${pidfile}"
-	fi
+    pid=$(head -1 "${pidfile}")
+    if ! kill -0 "${pid}" 2> /dev/null; then
+        echo "Bad pid file $pidfile; deleting."
+        pid=""
+        rm -f "${pidfile}"
+    fi
     fi
 
     if [ -n "${pid}" ]; then
-	echo "${pid}"
-	return 0
+    echo "${pid}"
+    return 0
     else
-	return 1
+    return 1
     fi
 }
 
@@ -892,11 +892,11 @@ This is like the [**LD\_PRELOAD on Linux**](../../linux-unix/privilege-escalatio
 This technique may be also **used as an ASEP technique** as every application installed has a plist called "Info.plist" that allows for the **assigning of environmental variables** using a key called `LSEnvironmental`.
 
 {% hint style="info" %}
-Since 2012 when [OSX.FlashBack.B](https://www.f-secure.com/v-descs/trojan-downloader_osx_flashback_b.shtml) \[22\] abused this technique, **Apple has drastically reduced the “power”** of the DYLD\_INSERT\_LIBRARIES. 
+Since 2012 when [OSX.FlashBack.B](https://www.f-secure.com/v-descs/trojan-downloader_osx_flashback_b.shtml) \[22\] abused this technique, **Apple has drastically reduced the “power”** of the DYLD\_INSERT\_LIBRARIES.
 
-For example the dynamic loader \(dyld\) ignores the DYLD\_INSERT\_LIBRARIES environment variable in a wide range of cases, such as setuid and platform binaries. And, starting with macOS Catalina, only 3rd-party applications that are not compiled with the hardened runtime \(which “protects the runtime integrity of software” \[22\]\), or have an exception such as the com.apple.security.cs.allow-dyld-environment-variables entitlement\) are susceptible to dylib insertions. 
+For example the dynamic loader \(dyld\) ignores the DYLD\_INSERT\_LIBRARIES environment variable in a wide range of cases, such as setuid and platform binaries. And, starting with macOS Catalina, only 3rd-party applications that are not compiled with the hardened runtime \(which “protects the runtime integrity of software” \[22\]\), or have an exception such as the com.apple.security.cs.allow-dyld-environment-variables entitlement\) are susceptible to dylib insertions.
 
-For more details on the security features afforded by the hardened runtime, see Apple’s documentation: “[Hardened Runtime](https://developer.apple.com/documentation/security/hardened_runtime)” 
+For more details on the security features afforded by the hardened runtime, see Apple’s documentation: “[Hardened Runtime](https://developer.apple.com/documentation/security/hardened_runtime)”
 {% endhint %}
 
 ## File Extensions Apps
@@ -921,33 +921,33 @@ You can also check the extensions supported by an application doing:
 ```bash
 cd /Applications/Safari.app/Contents
 grep -A3 CFBundleTypeExtensions Info.plist  | grep string
-				<string>css</string>
-				<string>pdf</string>
-				<string>webarchive</string>
-				<string>webbookmark</string>
-				<string>webhistory</string>
-				<string>webloc</string>
-				<string>download</string>
-				<string>safariextz</string>
-				<string>gif</string>
-				<string>html</string>
-				<string>htm</string>
-				<string>js</string>
-				<string>jpg</string>
-				<string>jpeg</string>
-				<string>jp2</string>
-				<string>txt</string>
-				<string>text</string>
-				<string>png</string>
-				<string>tiff</string>
-				<string>tif</string>
-				<string>url</string>
-				<string>ico</string>
-				<string>xhtml</string>
-				<string>xht</string>
-				<string>xml</string>
-				<string>xbl</string>
-				<string>svg</string>
+                <string>css</string>
+                <string>pdf</string>
+                <string>webarchive</string>
+                <string>webbookmark</string>
+                <string>webhistory</string>
+                <string>webloc</string>
+                <string>download</string>
+                <string>safariextz</string>
+                <string>gif</string>
+                <string>html</string>
+                <string>htm</string>
+                <string>js</string>
+                <string>jpg</string>
+                <string>jpeg</string>
+                <string>jp2</string>
+                <string>txt</string>
+                <string>text</string>
+                <string>png</string>
+                <string>tiff</string>
+                <string>tif</string>
+                <string>url</string>
+                <string>ico</string>
+                <string>xhtml</string>
+                <string>xht</string>
+                <string>xml</string>
+                <string>xbl</string>
+                <string>svg</string>
 ```
 
 ## Apple Scripts
@@ -1098,7 +1098,6 @@ sudo apachectl (start|status|restart|stop)
 #Remove DNS cache
 dscacheutil -flushcache
 sudo killall -HUP mDNSResponder
-
 ```
 
 ## References

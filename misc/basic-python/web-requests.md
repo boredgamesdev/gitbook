@@ -62,7 +62,7 @@ def RunCmd(cmd):
         return m.group(1)
     else:
         return 1
-    
+
 
 term = Terminal()
 term.cmdloop()

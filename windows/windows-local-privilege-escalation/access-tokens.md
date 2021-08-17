@@ -50,7 +50,7 @@ SeIncreaseWorkingSetPrivilege Increase a process working set       Disabled
 SeTimeZonePrivilege           Change the time zone                 Disabled
 ```
 
- or using _Process Explorer_ from Sysinternals \(select process and access"Security" tab\):
+or using _Process Explorer_ from Sysinternals \(select process and access"Security" tab\):
 
 ![](../../.gitbook/assets/image%20%28352%29.png)
 
@@ -81,7 +81,7 @@ This is useful if you have useful credentials to access objects in the network b
 There are two types of tokens available:
 
 * **Primary token**: Primary tokens can only be **associated to processes**, and they represent a process's security subject. The creation of primary tokens and their association to processes are both privileged operations, requiring two different privileges in the name of privilege separation - the typical scenario sees the authentication service creating the token, and a logon service associating it to the user's operating system shell. Processes initially inherit a copy of the parent process's primary token.
-* **Impersonation token**: Impersonation is a security concept implemented in Windows NT that **allows** a server application to **temporarily** "**be**" **the client** in terms of access to secure objects. Impersonation has **four possible levels**: 
+* **Impersonation token**: Impersonation is a security concept implemented in Windows NT that **allows** a server application to **temporarily** "**be**" **the client** in terms of access to secure objects. Impersonation has **four possible levels**:
 
   * **anonymous**, giving the server the access of an anonymous/unidentified user
   * **identification**, letting the server inspect the client's identity but not use that identity to access objects

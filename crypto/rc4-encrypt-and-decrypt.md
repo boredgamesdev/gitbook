@@ -4,11 +4,9 @@ If you can somehow encrypt a plaintext using a RC4**,** you can decrypt any cont
 
 If you can encrypt a known plaintext you can also extract the password. More references can be found in the HTB Kryptos machine:
 
-{% embed url="https://0xrick.github.io/hack-the-box/kryptos/" %}
+{% embed url="https://0xrick.github.io/hack-the-box/kryptos/" caption="" %}
 
-{% embed url="https://0xrick.github.io/hack-the-box/kryptos/" %}
+{% embed url="https://0xrick.github.io/hack-the-box/kryptos/" caption="" %}
 
 \*\*\*\*
-
-
 

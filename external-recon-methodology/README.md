@@ -304,7 +304,7 @@ cat /tmp/domains.txt | httprobe -p http:8080 -p https:8443 #Check port 80, 443 a
 
 Now that you have discovered **all the web servers** running in the scope \(in **IPs** of the company and all the **domains** and **subdomains**\) you probably **don't know where to start**. So, let's make it simple and start just taking screenshots of all of them. Just **taking a look** to the **main page** of all of them you could find **weird** endpoints more **prone** to be **vulnerable**.
 
-To perform the proposed idea you can use [**EyeWitness**](https://github.com/FortyNorthSecurity/EyeWitness), [**HttpScreenshot**](https://github.com/breenmachine/httpscreenshot), [**Aquatone**](https://github.com/michenriksen/aquatone), ****[**shutter**](https://shutter-project.org/downloads/) ****or [**webscreenshot**](https://github.com/maaaaz/webscreenshot)**.**
+To perform the proposed idea you can use [**EyeWitness**](https://github.com/FortyNorthSecurity/EyeWitness), [**HttpScreenshot**](https://github.com/breenmachine/httpscreenshot), [**Aquatone**](https://github.com/michenriksen/aquatone), **\*\*\[**shutter**\]\(**[https://shutter-project.org/downloads/](https://shutter-project.org/downloads/)**\) \*\***or [**webscreenshot**](https://github.com/maaaaz/webscreenshot)**.**
 
 ## Cloud Assets
 

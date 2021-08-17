@@ -38,5 +38,3 @@ perl ./padBuster.pl http://10.10.231.5/index.php "GVrfxWD0mmxRM0RPLht/oUpybgnBn/
 
 ![](../../.gitbook/assets/image%20%28271%29.png)
 
-
-

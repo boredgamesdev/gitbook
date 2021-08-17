@@ -26,7 +26,7 @@ Maybe **using a** _**Open with**_ **option** you can open/execute some kind of s
 
 For example _cmd.exe, command.com, Powershell/Powershell ISE, mmc.exe, at.exe, taskschd.msc..._ find more binaries that can be used to execute commands \(and perform unexpected actions\) here: [https://lolbas-project.github.io/](https://lolbas-project.github.io/)
 
-#### \*NIX __
+#### \*NIX \_\_
 
 _bash, sh, zsh..._ More here: [https://gtfobins.github.io/](https://gtfobins.github.io/)
 
@@ -40,7 +40,7 @@ _bash, sh, zsh..._ More here: [https://gtfobins.github.io/](https://gtfobins.git
 * **Shortcuts**: CTRL+N \(open new session\), CTRL+R \(Execute Commands\), CTRL+SHIFT+ESC \(Task Manager\),  Windows+E \(open explorer\), CTRL-B, CTRL-I \(Favourites\), CTRL-H \(History\), CTRL-L, CTRL-O \(File/Open Dialog\), CTRL-P \(Print Dialog\), CTRL-S \(Save As\)
   * Hidden Administrative menu: CTRL-ALT-F8, CTRL-ESC-F9
 * **Shell URIs**: _shell:Administrative Tools, shell:DocumentsLibrary, shell:Librariesshell:UserProfiles, shell:Personal, shell:SearchHomeFolder, shell:Systemshell:NetworkPlacesFolder, shell:SendTo, shell:UsersProfiles, shell:Common Administrative Tools, shell:MyComputerFolder, shell:InternetFolder_
-* **UNC paths**: Paths to connect to shared folders. You should try to connect to the C$ of the local machine \("\\127.0.0.1\c$\Windows\System32"\)
+* **UNC paths**: Paths to connect to shared folders. You should try to connect to the C$ of the local machine \("\127.0.0.1\c$\Windows\System32"\)
   * **More UNC paths:**
 
 | UNC | UNC | UNC |
@@ -71,7 +71,7 @@ Registry editor: [https://sourceforge.net/projects/uberregedit/](https://sourcef
 | C:/windows | C:/windows/ | C:/windows\ | C:\windows |
 | C:\windows\ | C:\windows/ | %WINDIR% | %TMP% |
 | %TEMP% | %SYSTEMDRIVE% | %SYSTEMROOT% | %APPDATA% |
-| %HOMEDRIVE% | %HOMESHARE |  |   |
+| %HOMEDRIVE% | %HOMESHARE |  |  |
 
 ### ShortCuts
 
@@ -142,8 +142,7 @@ Type this URLs to obtain an Explorer view:
 Backup iKat versions:
 
 [http://swin.es/k/](http://swin.es/k/)  
-[http://www.ikat.kronicd.net/](http://www.ikat.kronicd.net/)  
-
+[http://www.ikat.kronicd.net/](http://www.ikat.kronicd.net/)
 
 ## iPad
 

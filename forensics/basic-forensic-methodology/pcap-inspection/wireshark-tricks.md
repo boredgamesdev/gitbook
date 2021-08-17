@@ -16,11 +16,11 @@ The following tutorials are amazing to learn some cool basic tricks:
 Here you can find wireshark filter depending on the protocol: [https://www.wireshark.org/docs/dfref/](https://www.wireshark.org/docs/dfref/)  
 Other interesting filters:
 
-*  `(http.request or ssl.handshake.type == 1) and !(udp.port eq 1900)`
+* `(http.request or ssl.handshake.type == 1) and !(udp.port eq 1900)`
   * HTTP and initial HTTPS traffic
-*  `(http.request or ssl.handshake.type == 1 or tcp.flags eq 0x0002) and !(udp.port eq 1900)`
+* `(http.request or ssl.handshake.type == 1 or tcp.flags eq 0x0002) and !(udp.port eq 1900)`
   * HTTP and initial HTTPS traffic + TCP SYN
-*  `(http.request or ssl.handshake.type == 1 or tcp.flags eq 0x0002 or dns) and !(udp.port eq 1900)`
+* `(http.request or ssl.handshake.type == 1 or tcp.flags eq 0x0002 or dns) and !(udp.port eq 1900)`
   * HTTP and initial HTTPS traffic + TCP SYN + DNS requests
 
 ### Search
@@ -51,10 +51,6 @@ In current Wireshark instead of `bootp` you need to search for `DHCP`
 ### From NBNS
 
 ![](../../../.gitbook/assets/image%20%28406%29.png)
-
-
-
-
 
 ## Decrypting TLS
 
@@ -109,6 +105,4 @@ f = open('all_bytes.data', 'w+b')
 f.write(all_bytes)
 f.close()
 ```
-
-
 

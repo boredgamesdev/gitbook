@@ -139,30 +139,30 @@ The method in \_\_It\_\_ will be the one used by sort in order to compare if an 
 
 ```python
 class Person(name):
-	def __init__(self,name):
-		self.name= name
-		self.lastName = name.split(‘ ‘)[-1]
-		self.birthday = None
- 	def __It__(self, other):
-		if self.lastName == other.lastName:
-			return self.name < other.name
-		return self.lastName < other.lastName #Return True if the lastname is smaller
+    def __init__(self,name):
+        self.name= name
+        self.lastName = name.split(‘ ‘)[-1]
+        self.birthday = None
+     def __It__(self, other):
+        if self.lastName == other.lastName:
+            return self.name < other.name
+        return self.lastName < other.lastName #Return True if the lastname is smaller
 
-	def setBirthday(self, month, day. year):
-		self.birthday = date tame.date(year,month,day)
-	def getAge(self):
-		return (date time.date.today() - self.birthday).days
+    def setBirthday(self, month, day. year):
+        self.birthday = date tame.date(year,month,day)
+    def getAge(self):
+        return (date time.date.today() - self.birthday).days
 
 
 class MITPerson(Person):
-	nextIdNum = 0	# Attribute of the Class
-	def __init__(self, name):
-		Person.__init__(self,name)
-		self.idNum = MITPerson.nextIdNum  —> Accedemos al atributo de la clase
-		MITPerson.nextIdNum += 1 #Attribute of the class +1
+    nextIdNum = 0    # Attribute of the Class
+    def __init__(self, name):
+        Person.__init__(self,name)
+        self.idNum = MITPerson.nextIdNum  —> Accedemos al atributo de la clase
+        MITPerson.nextIdNum += 1 #Attribute of the class +1
 
-	def __it__(self, other):
-		return self.idNum < other.idNum
+    def __it__(self, other):
+        return self.idNum < other.idNum
 ```
 
 ### map, zip, filter, lambda, sorted and one-liners
@@ -185,12 +185,12 @@ m = **filter**\(lambda x: x % 3 == 0, \[1, 2, 3, 4, 5, 6, 7, 8, 9\]\) = \[3, 6, 
 
 ```text
 def make_adder(n):
-	return lambda x: x+n
+    return lambda x: x+n
 plus3 = make_adder(3)
 plus3(4) = 7 # 3 + 4 = 7
 
 class Car:
-	crash = lambda self: print('Boom!')
+    crash = lambda self: print('Boom!')
 my_car = Car(); my_car.crash() = 'Boom!'
 ```
 
@@ -199,17 +199,17 @@ mult1 = \[x for x in \[1, 2, 3, 4, 5, 6, 7, 8, 9\] if x%3 == 0 \]
 ### Exceptions
 
 ```text
-def divide(x,y):	
-	try:
-		result = x/y
-	except ZeroDivisionError, e:
-		print “division by zero!” + str(e)
-	except TypeError:
-		divide(int(x),int(y))
-	else:
-		print “result i”, result
-	finally
-		print “executing finally clause in any case”
+def divide(x,y):    
+    try:
+        result = x/y
+    except ZeroDivisionError, e:
+        print “division by zero!” + str(e)
+    except TypeError:
+        divide(int(x),int(y))
+    else:
+        print “result i”, result
+    finally
+        print “executing finally clause in any case”
 ```
 
 ### Assert\(\)
@@ -218,8 +218,8 @@ If the condition is false the string will by printed in the screen
 
 ```text
 def avg(grades, weights):
-	assert not len(grades) == 0, 'no grades data'
-	assert len(grades) == 'wrong number grades'
+    assert not len(grades) == 0, 'no grades data'
+    assert len(grades) == 'wrong number grades'
 ```
 
 ### Generators, yield
@@ -228,8 +228,8 @@ A generator, instead of returning something, it "yields" something. When you acc
 
 ```text
 def myGen(n):
-	yield n
-	yield n + 1
+    yield n
+    yield n + 1
 ```
 
 g = myGen\(6\) --&gt; 6  
@@ -250,10 +250,13 @@ re.findall\("\w+\(la\)","hola caracola"\) = \['la', 'la'\]
 \s --&gt; WhiteSpace char\[ \n\r\t\f\]  
 \S --&gt; Non-whitespace char  
 ^ --&gt; Starts with  
-$ --&gt; Ends with  
-+ --&gt; One or more  
-\* --&gt; 0 or more  
-? --&gt; 0 or 1 occurrences
+$ --&gt; Ends with
+
+* --&gt; One or more  
+
+  \* --&gt; 0 or more  
+
+  ? --&gt; 0 or 1 occurrences
 
 **Options:**  
 re.search\(pat,str,re.IGNORECASE\)  

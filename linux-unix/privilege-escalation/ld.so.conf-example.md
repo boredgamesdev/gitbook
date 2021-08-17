@@ -40,7 +40,7 @@ void say_hi()
 
 1. **Create** those files in your machine in the same folder
 2. **Compile** the **library**: `gcc -shared -o libcustom.so -fPIC libcustom.c`
-3. **Copy** _****libcustom.so_ to _/usr/lib_: `sudo cp libcustom.so /usr/lib` \(root privs\)
+3. **Copy** _\*\*libcustom.so_ to _/usr/lib_: `sudo cp libcustom.so /usr/lib` \(root privs\)
 4. **Compile** the **executable**: `gcc sharedvuln.c -o sharedvuln -lcustom`
 
 ### Check the environment
@@ -49,11 +49,11 @@ Check that _libcustom.so_ is being **loaded** from _/usr/lib_ and that you can *
 
 ```text
 $ ldd sharedvuln
-	linux-vdso.so.1 =>  (0x00007ffc9a1f7000)
-	libcustom.so => /usr/lib/libcustom.so (0x00007fb27ff4d000)
-	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb27fb83000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007fb28014f000)
-	
+    linux-vdso.so.1 =>  (0x00007ffc9a1f7000)
+    libcustom.so => /usr/lib/libcustom.so (0x00007fb27ff4d000)
+    libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb27fb83000)
+    /lib64/ld-linux-x86-64.so.2 (0x00007fb28014f000)
+
 $ ./sharedvuln 
 Welcome to my amazing application!
 Hi
@@ -91,10 +91,10 @@ Once this has happened **recheck** where is the `sharevuln` executable loading t
 
 ```c
 $ldd sharedvuln
-	linux-vdso.so.1 =>  (0x00007ffeee766000)
-	libcustom.so => /home/ubuntu/lib/libcustom.so (0x00007f3f27c1a000)
-	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f3f27850000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f3f27e1c000)
+    linux-vdso.so.1 =>  (0x00007ffeee766000)
+    libcustom.so => /home/ubuntu/lib/libcustom.so (0x00007f3f27c1a000)
+    libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f3f27850000)
+    /lib64/ld-linux-x86-64.so.2 (0x00007f3f27e1c000)
 ```
 
 As you can see it's **loading it from `/home/ubuntu/lib`** and if any user executes it, a shell will be executed:
@@ -111,7 +111,7 @@ ubuntu
 Note that in this example we haven't escalated privileges, but modifying the commands executed and **waiting for root or other privileged user to execute the vulnerable binary** we will be able to escalate privileges.
 {% endhint %}
 
-###  Other misconfigurations - Same vuln
+### Other misconfigurations - Same vuln
 
 In the previous example we faked a misconfiguration where an administrator **set a non-privileged folder inside a configuration file inside `/etc/ld.so.conf.d/`**.  
 But there are other misconfigurations that can cause the same vulnerability, if you have **write permissions** in some **config file** inside `/etc/ld.so.conf.d`s, in the folder `/etc/ld.so.conf.d` or in the file `/etc/ld.so.conf` you can configure the same vulnerability and exploit it.
@@ -135,10 +135,10 @@ And finally, lets load the path and check where is the binary loading the librar
 ldconfig -f fake.ld.so.conf
 
 ldd sharedvuln
-	linux-vdso.so.1 =>  (0x00007fffa2dde000)
-	libcustom.so => /tmp/libcustom.so (0x00007fcb07756000)
-	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fcb0738c000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007fcb07958000)
+    linux-vdso.so.1 =>  (0x00007fffa2dde000)
+    libcustom.so => /tmp/libcustom.so (0x00007fcb07756000)
+    libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fcb0738c000)
+    /lib64/ld-linux-x86-64.so.2 (0x00007fcb07958000)
 ```
 
 **As you can see, having sudo privileges over `ldconfig` you can exploit the same vulnerability.**

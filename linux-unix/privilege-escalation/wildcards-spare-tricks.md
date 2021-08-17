@@ -1,6 +1,6 @@
 # Wildcards Spare tricks
 
-### chown, chmod
+## chown, chmod
 
 You can **indicate which file owner and permissions you want to copy for the rest of the files**
 
@@ -11,7 +11,7 @@ touch "--reference=/my/own/path/filename"
 You can exploit this using [https://github.com/localh0t/wildpwn/blob/master/wildpwn.py](https://github.com/localh0t/wildpwn/blob/master/wildpwn.py) _\(combined attack\)_  
 More info in [https://www.exploit-db.com/papers/33930](https://www.exploit-db.com/papers/33930)
 
-### Tar
+## Tar
 
 **Execute arbitrary commands:**
 
@@ -23,7 +23,7 @@ touch "--checkpoint-action=exec=sh shell.sh"
 You can exploit this using [https://github.com/localh0t/wildpwn/blob/master/wildpwn.py](https://github.com/localh0t/wildpwn/blob/master/wildpwn.py) _\(tar attack\)_  
 More info in [https://www.exploit-db.com/papers/33930](https://www.exploit-db.com/papers/33930)
 
-### Rsync
+## Rsync
 
 **Execute arbitrary commands:**
 
@@ -38,10 +38,10 @@ Interesting rsync option from manual:
 touch "-e sh shell.sh"
 ```
 
-You can exploit this using [https://github.com/localh0t/wildpwn/blob/master/wildpwn.py](https://github.com/localh0t/wildpwn/blob/master/wildpwn.py) _\(_rsync _attack\)_  
+You can exploit this using [https://github.com/localh0t/wildpwn/blob/master/wildpwn.py](https://github.com/localh0t/wildpwn/blob/master/wildpwn.py) _\(\_rsync \_attack\)_  
 More info in [https://www.exploit-db.com/papers/33930](https://www.exploit-db.com/papers/33930)
 
-### 7z
+## 7z
 
 In **7z** even using `--` before `*` \(note that `--` means that the following input cannot treated as parameters, so just file paths in this case\) you can cause an arbitrary error to read a file, so if a command like the following one is being executed by root:
 
@@ -59,7 +59,7 @@ ln -s /file/you/want/to/read root.txt
 
 Then, when **7z** is execute, it will treat `root.txt` as a file containing the list of files it should compress \(thats what the existence of `@root.txt` indicates\) and when it 7z read `root.txt` it will read `/file/you/want/to/read` and **as the content of this file isn't a list of files, it will throw and error** showing the content.
 
-_More info in Write-ups of the box CTF from HackTheBox._ 
+_More info in Write-ups of the box CTF from HackTheBox._
 
 \_\_
 

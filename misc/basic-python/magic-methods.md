@@ -6,7 +6,7 @@ You can access the **methods** of a **class** using **\_\_dict\_\_.**
 
 ![](../../.gitbook/assets/image%20%28275%29.png)
 
-You can access the functions 
+You can access the functions
 
 ![](../../.gitbook/assets/image%20%28285%29.png)
 
@@ -30,7 +30,7 @@ You can access the **methods** of the **class** of an **object chainning** magic
 
 ## Server Side Template Injection
 
-Interesting functions to exploit this vulnerability 
+Interesting functions to exploit this vulnerability
 
 ```text
 __init__.__globals__

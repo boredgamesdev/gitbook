@@ -106,7 +106,7 @@ suricata -r packets.pcap -c /etc/suricata/suricata.yaml -k none -v -l log
 
 ### YaraPcap
 
-\*\*\*\*[**YaraPCAP**](https://github.com/kevthehermit/YaraPcap) is a tool that 
+\*\*\*\*[**YaraPCAP**](https://github.com/kevthehermit/YaraPcap) is a tool that
 
 * Reads a PCAP File and Extracts Http Streams.
 * gzip deflates any compressed streams

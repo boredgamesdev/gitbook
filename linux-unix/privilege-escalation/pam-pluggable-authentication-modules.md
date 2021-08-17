@@ -30,7 +30,7 @@ The leftmost column can contains four unique words, which represent four realms 
 
 ### **PAM Module Controls**
 
-The **middle column** holds a keyword that essentially determines w**hat PAM should do if the module either succeeds or fails**. These keywords are called ‘**controls**’ in PAM-speak. In 90% of the cases, you can use one of the common keywords \(**requisite**, **required**, **sufficient** or **optional**\). However, this is only the tip of the iceberg in terms of unleashing the flexibility and power of PAM. 
+The **middle column** holds a keyword that essentially determines w**hat PAM should do if the module either succeeds or fails**. These keywords are called ‘**controls**’ in PAM-speak. In 90% of the cases, you can use one of the common keywords \(**requisite**, **required**, **sufficient** or **optional**\). However, this is only the tip of the iceberg in terms of unleashing the flexibility and power of PAM.
 
 * **required**: If a ‘required’ module returns a status that is **not ‘success’**, the **operation will ultimately fail ALWAYS**, but only after the **modules below it are invoked**. This seems senseless at first glance I suppose, but it serves the purpose of **always acting the same way from the point of view of the user** trying to utilize the service. The net effect is that it becomes **impossible** for a potential cracker to **determine** **which** **module** caused the **failure**.
 * **requisite**: If a ‘requisite’ module fails, the **operation** not only **fails**, but the operation is **immediately** **terminated** with a failure without invoking any other modules.

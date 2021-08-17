@@ -55,9 +55,7 @@ bloodhound
 
 You will be prompted for the database credentials: **neo4j:&lt;Your new password&gt;**
 
-  
-  
-****And bloodhound will be ready to ingest data.
+_\*\*_And bloodhound will be ready to ingest data.
 
 ![](../../.gitbook/assets/image%20%28246%29.png)
 

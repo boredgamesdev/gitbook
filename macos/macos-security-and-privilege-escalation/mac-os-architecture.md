@@ -78,13 +78,13 @@ On the **other** hand, many familiar pieces of Mac OS X are **not open source**.
 
 ### **Universal binaries**
 
-Mac OS binaries usually are compiled as universal binaries. ****A **universal binary** can **support multiple architectures in the same file**.
+Mac OS binaries usually are compiled as universal binaries. **\*\*A** universal binary **can** support multiple architectures in the same file\*\*.
 
 ```bash
 file /bin/ls
 /bin/ls: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64e:Mach-O 64-bit executable arm64e]
-/bin/ls (for architecture x86_64):	Mach-O 64-bit executable x86_64
-/bin/ls (for architecture arm64e):	Mach-O 64-bit executable arm64e
+/bin/ls (for architecture x86_64):    Mach-O 64-bit executable x86_64
+/bin/ls (for architecture arm64e):    Mach-O 64-bit executable arm64e
 ```
 
 In the following example, a universal binary for the **x86** **and** **PowerPC** architectures is created:
@@ -105,13 +105,13 @@ The header contains basic information about the file, such as magic bytes to ide
 
 ```c
 struct mach_header {
-	uint32_t	magic;		/* mach magic number identifier */
-	cpu_type_t	cputype;	/* cpu specifier (e.g. I386) */
-	cpu_subtype_t	cpusubtype;	/* machine specifier */
-	uint32_t	filetype;	/* type of file (usage and alignment for the file) */
-	uint32_t	ncmds;		/* number of load commands */
-	uint32_t	sizeofcmds;	/* the size of all the load commands */
-	uint32_t	flags;		/* flags */
+    uint32_t    magic;        /* mach magic number identifier */
+    cpu_type_t    cputype;    /* cpu specifier (e.g. I386) */
+    cpu_subtype_t    cpusubtype;    /* machine specifier */
+    uint32_t    filetype;    /* type of file (usage and alignment for the file) */
+    uint32_t    ncmds;        /* number of load commands */
+    uint32_t    sizeofcmds;    /* the size of all the load commands */
+    uint32_t    flags;        /* flags */
 };
 ```
 
@@ -137,7 +137,7 @@ struct load_command {
 };
 ```
 
-A **common** type of load command is **LC\_SEGMENT/LC\_SEGMENT\_64**, which **describes** a **segment:**   
+A **common** type of load command is **LC\_SEGMENT/LC\_SEGMENT\_64**, which **describes** a **segment:**  
 _A segment defines a **range of bytes** in a Mach-O file and the **addresses** and **memory** **protection** **attributes** at which those bytes are **mapped into** virtual memory when the dynamic linker loads the application._
 
 ![](../../.gitbook/assets/image%20%28554%29.png)
@@ -145,7 +145,7 @@ _A segment defines a **range of bytes** in a Mach-O file and the **addresses** a
 Common segments:
 
 * **`__TEXT`**: Contains **executable** **code** and **data** that is **read-only.** Common sections of this segment:
-  * `__text`: ****Compiled binary code
+  * `__text`: _\*\*_Compiled binary code
   * `__const`: Constant data
   * `__cstring`: String constants
 * **`__DATA`**: Contains data that is **writable.**
@@ -155,7 +155,7 @@ Common segments:
 * **`__LINKEDIT`**: Contains information for the linker \(dyld\) such as, "symbol, string, and relocation table entries."
 * **`__OBJC`**: Contains information used by the Objective-C runtime. Though this information might also be found in the \_\_DATA segment, within various in \_\_objc\_\* sections.
 * **`LC_MAIN`**: Contains the entrypoint in the **entryoff attribute.** At load time, **dyld** simply **adds** this value to the \(in-memory\) **base of the binary**, then **jumps** to this instruction to kickoff execution of the binary’s code.
-* **`LC_LOAD_DYLIB`**: ****This load command describes a **dynamic** **library** dependency which **instructs** the **loader** \(dyld\) to l**oad and link said library**. There is a LC\_LOAD\_DYLIB load command **for each library** that the Mach-O binary requires.
+* **`LC_LOAD_DYLIB`**: **\*\*This load command describes a** dynamic ****library **dependency which** instructs **the** loader **\(dyld\) to l**oad and link said library**. There is a LC\_LOAD\_DYLIB load command** for each library\*\* that the Mach-O binary requires.
 
   * This load command is a structure of type **`dylib_command`** \(which contains a struct dylib, describing the actual dependent dynamic library\):
 
@@ -183,7 +183,7 @@ Some potential malware related libraries are:
 * **CoreWLAN**: Wifi scans.
 
 {% hint style="info" %}
-A Mach-O binary can contain one or **more** **constructors**, that will be **executed** **before** the address specified in **LC\_MAIN**.   
+A Mach-O binary can contain one or **more** **constructors**, that will be **executed** **before** the address specified in **LC\_MAIN**.  
 The offsets of any constructors are held in the **\_\_mod\_init\_func** section of the **\_\_DATA\_CONST** segment.
 {% endhint %}
 
@@ -220,28 +220,26 @@ ls -lR /Applications/Safari.app/Contents
 
 * `Contents/MacOS`
 
-  Contains the **application’s binary** \(which is executed when the user double-clicks the application icon in the UI\). 
+  Contains the **application’s binary** \(which is executed when the user double-clicks the application icon in the UI\).
 
 * `Contents/Resources`
 
-  Contains **UI elements of the application**, such as images, documents, and nib/xib files \(that describe various user interfaces\). 
+  Contains **UI elements of the application**, such as images, documents, and nib/xib files \(that describe various user interfaces\).
 
-* `Contents/Info.plist` ****The application’s main “**configuration file.**” Apple notes that “the system relies on the presence of this file to identify relevant information about \[the\] application and any related files”.
+* `Contents/Info.plist` **\*\*The application’s main “**configuration file.\*\*” Apple notes that “the system relies on the presence of this file to identify relevant information about \[the\] application and any related files”.
   * **Plist** **files** contains configuration information. You can find find information about the meaning of they plist keys in [https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html)
   * Pairs that may be of interest when analyzing an application include:  
+* **CFBundleExecutable**
 
+  Contains the **name of the application’s binary** \(found in Contents/MacOS\).
 
-    * **CFBundleExecutable**
+* **CFBundleIdentifier**
 
-    Contains the **name of the application’s binary** \(found in Contents/MacOS\).
+  Contains the application’s bundle identifier \(often used by the system to **globally** **identify** the application\).
 
-    * **CFBundleIdentifier**
+* **LSMinimumSystemVersion**
 
-    Contains the application’s bundle identifier \(often used by the system to **globally** **identify** the application\).
-
-    * **LSMinimumSystemVersion**
-
-    Contains the **oldest** **version** of **macOS** that the application is compatible with.
+  Contains the **oldest** **version** of **macOS** that the application is compatible with.
 
 ### Objective-C
 
@@ -263,10 +261,10 @@ Note that this names can be obfuscated to make the reversing of the binary more 
 
 There are some projects that allow to generate a binary executable by MacOS containing script code which will be executed. Some examples are:
 
-* **Platypus**: Generate MacOS binary executing ****shell scripts, Python, Perl, Ruby, PHP, Swift, Expect, Tcl, AWK, JavaScript, AppleScript or any other user-specified interpreter.
+* **Platypus**: Generate MacOS binary executing _\*\*_shell scripts, Python, Perl, Ruby, PHP, Swift, Expect, Tcl, AWK, JavaScript, AppleScript or any other user-specified interpreter.
   * **It saves the script in `Contents/Resources/script`. So finding this script is a good indicator that Platypus was used.**
 * **PyInstaller:** Python
-  * Ways to detect this is the use of the embedded ****string **“Py\_SetPythonHome”** or a a **call** into a function named **`pyi_main`.**
+  * Ways to detect this is the use of the embedded **\*\*string** “Py\_SetPythonHome” **or a a** call **into a function named** `pyi_main`.\*\*
 * **Electron:** JavaScript, HTML, and CSS.
   * These binaries will use **Electron Framework.framework**. Moreover, the non-binary components \(e.g. JavaScript files\) maybe found in the application’s **`Contents/Resources/`** directory, achieved in `.asar` files. These binaries will use Electron Framework.framework. Moreover, the non-binary components \(e.g. JavaScript files\) maybe found in the application’s **`Contents/Resources/`** directory, achieved in **`.asar` files**. It's possible **unpack** such archives via the **asar** node module, or the **npx** **utility:** `npx asar extract StrongBox.app/Contents/Resources/app.asar appUnpacked` 
 

