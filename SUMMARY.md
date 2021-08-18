@@ -5,6 +5,7 @@
 ## My Notes
 
 * [Ideas](my-notes/ideas.md)
+* [Recon Scan](my-notes/recon-scan.md)
 * [Passwd](my-notes/passwd.md)
 * [Active Directory](my-notes/active-directory.md)
 * [Shells](my-notes/shells.md)
