@@ -1,8 +1,23 @@
 # Table of contents
 
-* [HackTricks](README.md)
-* [Untitled](untitled-1.md)
-* [HackTricks](untitled.md)
+* [My Notes](README.md)
+
+## My Notes
+
+* [Ideas](my-notes/ideas.md)
+* [Passwd](my-notes/passwd.md)
+* [Active Directory](my-notes/active-directory.md)
+* [Shells](my-notes/shells.md)
+* [Password Cracking](my-notes/password-cracking.md)
+* [\*NIX](my-notes/nix/README.md)
+  * [Neat Tricks](my-notes/nix/neat-tricks.md)
+* [Malware](my-notes/malware/README.md)
+  * [VirusShare](my-notes/malware/virusshare.md)
+
+## Hacktricks
+
+---
+
 * [Pentesting Methodology](pentesting-methodology.md)
 * [External Recon Methodology](external-recon-methodology/README.md)
   * [Phishing Methodology](external-recon-methodology/phishing-methodology/README.md)
@@ -568,6 +583,4 @@
 * [Online Platforms with API](online-platforms-with-api.md)
 * [Stealing Sensitive Information Disclosure from a Web](stealing-sensitive-information-disclosure-from-a-web.md)
 * [Post Exploitation](post-exploitation.md)
-
-## Hacktricks
 
