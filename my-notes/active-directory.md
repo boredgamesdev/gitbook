@@ -6,7 +6,7 @@ It's worth checking if the LDAP service allows anonymous binds using the ldapsea
 
 ## RPC Enum
 
-`rpcclient -U "" -N 10.10.10.161`
+`rpcclient -U "" 10.10.10.161`
 
 `enumdomusers` `enumdomgroups`
 
