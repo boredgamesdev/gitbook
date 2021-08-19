@@ -1,12 +1,12 @@
 # Neat Tricks
 
-
+## Checks if the system is waiting for a reboot after an update and then reboots if need be.
 
 `[ -f /var/run/reboot-required ] && sudo reboot -f`
 
-## Checks if the system is waiting for a reboot after an update and then reboots if need be.
 
-convert encoded command for powershell to base64 in linux
+
+## convert encoded command for powershell to base64 in linux
 
 ```text
 powershell -EncodedCommand $BASE64
