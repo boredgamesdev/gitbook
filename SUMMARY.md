@@ -7,6 +7,7 @@
 * [HTB](my-notes/htb.md)
 * [Scan](my-notes/recon-scan.md)
 * [Passwd](my-notes/passwd.md)
+* [SMB](my-notes/smb.md)
 * [Active Directory](my-notes/active-directory.md)
 * [Shells](my-notes/shells.md)
 * [Password Cracking](my-notes/password-cracking.md)
