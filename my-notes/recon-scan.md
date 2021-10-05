@@ -1,4 +1,4 @@
-# Recon Scan
+# Scan
 
 Quick Masscan to Nmap scan
 
