@@ -15,3 +15,6 @@
   * [Neat Tricks](my-notes/nix/neat-tricks.md)
 * [Malware](my-notes/malware/README.md)
   * [VirusShare](my-notes/malware/virusshare.md)
+* [Web](my-notes/web/README.md)
+  * [NGINX](my-notes/web/nginx/README.md)
+    * [ACL Bypass](my-notes/web/nginx/acl-bypass.md)
