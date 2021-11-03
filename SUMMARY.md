@@ -19,4 +19,4 @@
   * [NGINX](my-notes/web/nginx/README.md)
     * [ACL Bypass](my-notes/web/nginx/acl-bypass.md)
 * [Cobalt Strike](my-notes/cobalt-strike/README.md)
-  * [Cheatsheet](my-notes/cobalt-strike/cheatsheet.md)
+  * [Cheat Sheet](my-notes/cobalt-strike/cheat-sheet.md)
