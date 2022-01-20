@@ -1,3 +1,3 @@
 # Converting Files
 
-Pand
+pandoc -s (get-childitem \*.md).FullName -o output.docx

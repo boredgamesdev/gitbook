@@ -9,6 +9,7 @@
 * [Passwd](my-notes/passwd.md)
 * [SMB](my-notes/smb.md)
 * [Active Directory](my-notes/active-directory.md)
+* [Exfiltration](my-notes/exfiltration.md)
 * [Shells](my-notes/shells.md)
 * [Password Cracking](my-notes/password-cracking.md)
 * [\*NIX](my-notes/nix/README.md)
