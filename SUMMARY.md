@@ -6,6 +6,7 @@
 
 * [Scan](my-notes/recon-scan.md)
 * [Passwd](my-notes/passwd.md)
+* [FTP](my-notes/ftp.md)
 * [SMB](my-notes/smb.md)
 * [Active Directory](my-notes/active-directory.md)
 * [Exfiltration](my-notes/exfiltration.md)
