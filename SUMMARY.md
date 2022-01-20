@@ -4,7 +4,6 @@
 
 ## My Notes
 
-* [HTB](my-notes/htb.md)
 * [Scan](my-notes/recon-scan.md)
 * [Passwd](my-notes/passwd.md)
 * [SMB](my-notes/smb.md)
