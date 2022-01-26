@@ -21,6 +21,8 @@
     * [ACL Bypass](my-notes/web/nginx/acl-bypass.md)
 * [Cobalt Strike](my-notes/cobalt-strike/README.md)
   * [Cheat Sheet](my-notes/cobalt-strike/cheat-sheet.md)
+* [Exploits](my-notes/exploits/README.md)
+  * [Linux](my-notes/exploits/linux.md)
 
 ## Group 1
 
