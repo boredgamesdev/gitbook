@@ -12,6 +12,7 @@
 * [Exfiltration](my-notes/exfiltration.md)
 * [Shells](my-notes/shells.md)
 * [Password Cracking](my-notes/password-cracking.md)
+* [Windows](my-notes/windows.md)
 * [\*NIX](my-notes/nix/README.md)
   * [Neat Tricks](my-notes/nix/neat-tricks.md)
 * [Malware](my-notes/malware/README.md)
