@@ -14,6 +14,7 @@
 * [Password Cracking](my-notes/password-cracking.md)
 * [Windows](my-notes/windows.md)
 * [\*NIX](my-notes/nix/README.md)
+  * [Compiling](my-notes/nix/compiling.md)
   * [Neat Tricks](my-notes/nix/neat-tricks.md)
 * [Malware](my-notes/malware/README.md)
   * [VirusShare](my-notes/malware/virusshare.md)
