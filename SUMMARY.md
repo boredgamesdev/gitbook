@@ -5,7 +5,6 @@
 ## My Notes
 
 * [Scan](my-notes/recon-scan.md)
-* [Passwd](my-notes/passwd.md)
 * [FTP](my-notes/ftp.md)
 * [SMB](my-notes/smb.md)
 * [Active Directory](my-notes/active-directory.md)
@@ -14,6 +13,7 @@
 * [Password Cracking](my-notes/password-cracking.md)
 * [Windows](my-notes/windows.md)
 * [\*NIX](my-notes/nix/README.md)
+  * [Passwd](my-notes/nix/passwd.md)
   * [Compiling](my-notes/nix/compiling.md)
   * [Neat Tricks](my-notes/nix/neat-tricks.md)
 * [Malware](my-notes/malware/README.md)
