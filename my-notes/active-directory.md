@@ -4,6 +4,14 @@
 
 It's worth checking if the LDAP service allows anonymous binds using the ldapsearch tool
 
+If your server is accepting anonymous authentication, you will be able to perform a LDAP search query without binding to the admin account. (the domain in this case is htb.local
+
+```
+ldapsearch -x -h 192.168.65.122 -D '' -w '' -b "DC=hutch,DC=offsec"   
+```
+
+Note: This is the simplest form of output, so this will contain a whole to of information.
+
 ## RPC Enum
 
 `rpcclient -U "" 10.10.10.161`
