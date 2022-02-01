@@ -14,6 +14,7 @@
 * [SQL](my-notes/sql.md)
 * [Windows](my-notes/windows.md)
 * [\*NIX](my-notes/nix/README.md)
+  * [Privesc](my-notes/nix/privesc.md)
   * [Passwd](my-notes/nix/passwd.md)
   * [Compiling](my-notes/nix/compiling.md)
   * [Neat Tricks](my-notes/nix/neat-tricks.md)
