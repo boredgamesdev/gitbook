@@ -31,3 +31,9 @@
 ## Group 1
 
 * [Converting Files](group-1/converting-files.md)
+
+## Programming
+
+* [Go](programming/go/README.md)
+  * [Blackhat Go](programming/go/blackhat-go/README.md)
+    * [Fundamentals](programming/go/blackhat-go/fundamentals.md)
