@@ -27,6 +27,7 @@
   * [Cheat Sheet](my-notes/cobalt-strike/cheat-sheet.md)
 * [Exploits](my-notes/exploits/README.md)
   * [Linux](my-notes/exploits/linux.md)
+  * [Windows](my-notes/exploits/windows.md)
 
 ## Group 1
 
