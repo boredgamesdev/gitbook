@@ -4,7 +4,6 @@
 
 ## My Notes
 
-* [Scan](my-notes/recon-scan.md)
 * [FTP](my-notes/ftp.md)
 * [SMB](my-notes/smb.md)
 * [Active Directory](my-notes/active-directory.md)
