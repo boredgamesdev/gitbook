@@ -1,6 +1,6 @@
 # Compiling
 
-### LD-PRELOAD
+### LD\_PRELOAD
 
 If you find inside the output of **`sudo -l`** the sentence: _**env\_keep+=LD\_PRELOAD**_ and you can call some command with sudo, you can escalate privileges.
 
